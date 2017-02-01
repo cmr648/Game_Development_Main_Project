@@ -20,9 +20,6 @@ public class Camera_Movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-
-
-
 		float currentX = Camera.main.transform.position.x; // getting the current transform of the camera X
 		float setCameraX = currentX += (cameraTargetX - currentX) * 0.1f; // an equation that will always move the cameras position to the correct camera x target that we set
 		float currentY = Camera.main.transform.position.y; // getting the current transform of the camera Y
