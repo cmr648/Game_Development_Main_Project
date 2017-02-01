@@ -12,20 +12,19 @@ public class Player_Movement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	rb = GetComponent<Rigidbody2D>(); // setting our rb variable to the current rigidbody of the player
-
+		rb = GetComponent<Rigidbody2D>(); // setting our rb variable to the current rigidbody of the player
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-
+		ArrowKeyMovement(); // implementing our player movement function
 	}
 
 	void FixedUpdate(){ // an update function that runs on a time stamp rather than every rendered frame
 		currentPlayerPos = new Vector2(transform.position.x,transform.position.y); // resetting the current player position on fixed update
 		rb.MovePosition(currentPlayerPos + PlayerInput*playerspeed); //moving the position of the player every time
-		ArrowKeyMovement(); // implementing our player movement function
+
 	}
 
 	void ArrowKeyMovement ()
