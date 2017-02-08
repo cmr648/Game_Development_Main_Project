@@ -37,42 +37,26 @@ public class Room_Spanwer : MonoBehaviour {
 	{
 		if (col.gameObject.tag == "Room_Spawn_Left") { //an if statement that checks to see if the trigger that the player has entered is the left spawn object
 			Instantiate (Rooms_Left [Room_Index], new Vector3 (Camera_Current_Transform.x - Room_Spawn_Distance_Left, Camera_Current_Transform.y + Camera_Correct_Y, Camera_Current_Transform.z + 10), Quaternion.identity); // this is a script that spawns a new room every time we collide with the left spawn gameobject
-			// Destroy (col.gameObject); // after we spawn the room we have to destroy the left spawn gameobject
+			 Destroy (col.gameObject); // after we spawn the room we have to destroy the left spawn gameobject
 		}
 
 		if (col.gameObject.tag == "Room_Spawn_Right") { //an if statement that checks to see if the trigger that the player has entered is the Right spawn object
 			Instantiate (Rooms_Right [Room_Index], new Vector3 (Camera_Current_Transform.x + Room_Spawn_Distance_Right, Camera_Current_Transform.y + Camera_Correct_Y, Camera_Current_Transform.z + 10), Quaternion.identity); // this is a script that spawns a new room every time we collide with the Right spawn gameobject
-			//Destroy (col.gameObject); // after we spawn the room we have to destroy the Right spawn gameobject
+			Destroy (col.gameObject); // after we spawn the room we have to destroy the Right spawn gameobject
 		}
 
 		if (col.gameObject.tag == "Room_Spawn_Top") { //an if statement that checks to see if the trigger that the player has entered is the top spawn object
 			Instantiate(Rooms_Top [Room_Index], new Vector3(Camera_Current_Transform.x-Camera_Correct_X,Camera_Current_Transform.y + Room_Spawn_Distance_Top,Camera_Current_Transform.z+10),Quaternion.identity); // this is a script that spawns a new room every time we collide with the top spawn gameobject
-			//Destroy(col.gameObject); // after we spawn the room we have to destroy the top spawn gameobject
+			Destroy(col.gameObject); // after we spawn the room we have to destroy the top spawn gameobject
 		}
 
 
 		if (col.gameObject.tag == "Room_Spawn_Bottom") { //an if statement that checks to see if the trigger that the player has entered is the Bottom spawn object
 			Instantiate(Rooms_Bottom [Room_Index], new Vector3(Camera_Current_Transform.x-Camera_Correct_X,Camera_Current_Transform.y - Room_Spawn_Distance_Bottom,Camera_Current_Transform.z+10),Quaternion.identity); // this is a script that spawns a new room every time we collide with the Bottom spawn gameobject
-			//Destroy(col.gameObject); // after we spawn the room we have to destroy the bottom spawn gameobject
+			Destroy(col.gameObject); // after we spawn the room we have to destroy the bottom spawn gameobject
 		}
 
 	}
 
-	void OnTriggerExit2D(Collider2D col){ // A void that checks to see if the player object has exited the trigger
-		if (col.gameObject.tag == "Room_Spawn_Left") { //an if statement that checks to see if the trigger that the player has exited is the left spawn object
-			Destroy (col.transform.parent.gameObject); // after we spawn the room we have to destroy the left spawn gameobject
-		}
 
-		if (col.gameObject.tag == "Room_Spawn_Right") { //an if statement that checks to see if the trigger that the player has exited is the right spawn object
-			Destroy (col.transform.parent.gameObject); // after we spawn the room we have to destroy the right spawn gameobject
-		}
-
-		if (col.gameObject.tag == "Room_Spawn_Top") { //an if statement that checks to see if the trigger that the player has exited is the top spawn object
-			Destroy (col.transform.parent.gameObject); // after we spawn the room we have to destroy the top spawn gameobject
-		}
-
-		if (col.gameObject.tag == "Room_Spawn_Bottom") { //an if statement that checks to see if the trigger that the player has exited is the bottom spawn object
-			Destroy (col.transform.parent.gameObject); // after we spawn the room we have to destroy the bottom spawn gameobject
-		}
-	}
 }

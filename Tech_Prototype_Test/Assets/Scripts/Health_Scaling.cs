@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health_Scaling : MonoBehaviour {
 
@@ -17,14 +18,13 @@ public class Health_Scaling : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
 	void FixedUpdate(){ // an update function taht is called every frame instead of every rendered frame
-
 		Health_Bar.transform.localScale = new Vector3 ((Player_Current_Health/Player_Total_Health),1,1); // changing the scale of the health bar to change when taking damage
 		Damage_Bounds(); // implementing our damage bounds function
-
+		Game_Over_Check(); // implementing game over check
 	}
 
 	void OnCollisionEnter2D (Collision2D col)
@@ -36,6 +36,7 @@ public class Health_Scaling : MonoBehaviour {
 
 		if (col.gameObject.tag == "Health_Boost") { // checking to see if the player is colliding with a health boost game object
 			Player_Current_Health += Player_Health_Boost; // adding the player health boost to the health bar
+			Destroy(col.gameObject); // get rid of the health pack upon using it one time
 		}
 
 	}
@@ -51,4 +52,14 @@ public class Health_Scaling : MonoBehaviour {
 		}
 		
 	}
+
+	void Game_Over_Check ()
+	{ // creating our game over check function
+		if (Player_Current_Health == 0) { // checking to see if player health = 0
+		SceneManager.LoadScene("Game_Over"); // loading our game over screen if the player health = 0
+		}
+
+	}
+
+
 }
