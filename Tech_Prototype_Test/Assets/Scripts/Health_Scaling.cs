@@ -34,6 +34,11 @@ public class Health_Scaling : MonoBehaviour {
 			Player_Current_Health -= Player_Damage; // subtracting the player damage from the health bar
 		}
 
+		if (col.gameObject.tag == "Enemy_Bullet") { // checking to see if the player is colliding with an enemy bullet game object
+			Player_Current_Health -= Player_Damage; // subtracting the player damage from the health bar
+			Destroy(col.gameObject); // destroy the bullet
+		};
+
 		if (col.gameObject.tag == "Health_Boost") { // checking to see if the player is colliding with a health boost game object
 			Player_Current_Health += Player_Health_Boost; // adding the player health boost to the health bar
 			Destroy(col.gameObject); // get rid of the health pack upon using it one time

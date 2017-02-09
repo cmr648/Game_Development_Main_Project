@@ -19,24 +19,25 @@ public class Bullet_Collision : MonoBehaviour {
 			Destroy(gameObject); // making the bullet destroy itself
 		}
 
+
 	}
 
 	void OnTriggerEnter2D (Collider2D col) // checking to see if the player is colliding with an objects
 	{
-		if (col.gameObject.tag == "Camera_Left_Bounds") { //checking to see if the players is colliding with the left
-			Destroy(gameObject); // making the bullet destroy itself
+		if (col.gameObject.tag == "Camera_Left_Bounds") { //checking to see if the bullet is colliding with the left
+			Destroy (gameObject); // making the bullet destroy itself
 		} 
 
-		if (col.gameObject.tag == "Camera_Right_Bounds") { //checking to see if the players is colliding with the right
-			Destroy(gameObject); // making the bullet destroy itself
+		if (col.gameObject.tag == "Camera_Right_Bounds") { //checking to see if the bullet is colliding with the right
+			Destroy (gameObject); // making the bullet destroy itself
 		} 
 
-		if (col.gameObject.tag == "Camera_Top_Bounds") { //checking to see if the players is colliding with the Top
-			Destroy(gameObject); // making the bullet destroy itself
+		if (col.gameObject.tag == "Camera_Top_Bounds") { //checking to see if the bullet is colliding with the Top
+			Destroy (gameObject); // making the bullet destroy itself
 		} 
 
-		if (col.gameObject.tag == "Camera_Bottom_Bounds") { //checking to see if the players is colliding with the Bottom
-			Destroy(gameObject); // making the bullet destroy itself
+		if (col.gameObject.tag == "Camera_Bottom_Bounds") { //checking to see if the bullet is colliding with the Bottom
+			Destroy (gameObject); // making the bullet destroy itself
 		} 
 
 
