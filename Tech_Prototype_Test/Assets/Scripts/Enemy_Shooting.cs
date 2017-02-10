@@ -6,6 +6,7 @@ public class Enemy_Shooting : MonoBehaviour {
 
 	public GameObject Enemy_Bullet; // Creating a public gameobject for the enemy bullet
 	public float Bullet_Time; // Creating a public float for the time it takes to shoot a bullet
+	public Transform Bullet_Pos; // creating a public transform for the bullet position
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +22,7 @@ public class Enemy_Shooting : MonoBehaviour {
 
 	void Enemy_Fire(){ // creating our enemy fire function
 
-		Instantiate(Enemy_Bullet,transform.position,transform.rotation); // using our enemy fire command to instantiate an enmy bullet that will fire
+		Instantiate(Enemy_Bullet,Bullet_Pos.position,transform.rotation); // using our enemy fire command to instantiate an enmy bullet that will fire
 
 	}
 }
