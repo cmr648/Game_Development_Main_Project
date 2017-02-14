@@ -19,6 +19,7 @@ public class Player_Movement : MonoBehaviour {
 	void Update ()
 	{
 		ArrowKeyMovement(); // implementing our player movement function
+		PlayerAngleMovement(); // implementing our player angle movement
 	}
 
 	void FixedUpdate(){ // an update function that runs on a time stamp rather than every rendered frame
@@ -32,24 +33,35 @@ public class Player_Movement : MonoBehaviour {
 		PlayerInput = Vector2.zero;
 		if (Input.GetKey (KeyCode.UpArrow)) { // checking to see if the up arrow key has been pressed
 			PlayerInput += new Vector2 (0,1); // setting the player input vector 2 to the up direction
-			transform.eulerAngles = new Vector3 (0,0,90); // Changing the angle of our player to be facing up 
 		} 
 		if (Input.GetKey (KeyCode.DownArrow)) { // checking to see if the down arrow key has been pressed
 			PlayerInput += new Vector2(0, -1); // setting the player input vector 2 to the down direction
-			transform.eulerAngles = new Vector3 (0,0,-90); // Changing the angle of our player to be facing down 
 		}
 		if (Input.GetKey (KeyCode.LeftArrow)) { // checking to see if the left arrow key has been pressed
 			PlayerInput += new Vector2(-1, 0); // setting the player input vector 2 to the left direction
-			transform.eulerAngles =  new Vector3(0,0,180); // Changing the angle of our player to be facing left
 		}
 		if (Input.GetKey (KeyCode.RightArrow)) { // checking to see if the right arrow key has been pressed
 			PlayerInput += new Vector2(1,0); // setting the player input vector 2 to the right direction
-			transform.eulerAngles = new Vector3 (0,0,0); // Changing the angle of our player to be facing right
 		}
 
 	}
 
-	 
+	void PlayerAngleMovement(){
+		if (Input.GetKey (KeyCode.W)) { // checking to see if the W key has been pressed
+			transform.eulerAngles = new Vector3 (0,0,90); // Changing the angle of our player to be facing up 
+		} 
 
+		if (Input.GetKey (KeyCode.S)) { // checking to see if the S key has been pressed
+			transform.eulerAngles = new Vector3 (0,0,-90); // Changing the angle of our player to be facing up 
+		} 
+
+		if (Input.GetKey (KeyCode.A)) { // checking to see if the A key has been pressed
+			transform.eulerAngles = new Vector3 (0,0,180); // Changing the angle of our player to be facing up 
+		} 
+
+		if (Input.GetKey (KeyCode.D)) { // checking to see if the D key has been pressed
+			transform.eulerAngles = new Vector3 (0,0,0); // Changing the angle of our player to be facing up 
+		} 
+	}
 
 }
