@@ -6,6 +6,8 @@ public class Enemy_Health : MonoBehaviour {
 
 	public float Start_Health; // the health that an enemy will start with
 	float Half_Health;
+	public GameObject[] Treasure_Drops; // creating a public list of gameobjects for the enemys to drop when they die
+	int Treasure_Choose; // creating a treasure chooser variable to choose the treasure that will be droped by an enemy
 	SpriteRenderer Enemy_Renderer; // Creating a variable to get the renderer of the enemy game object
 
 	// Use this for initialization
@@ -23,12 +25,16 @@ public class Enemy_Health : MonoBehaviour {
 
 	void FixedUpdate () // an update function that is called every frame
 	{
+
+		Treasure_Choose = Random.Range(0,Treasure_Drops.Length); // setting our treasure choose variable to be a different treasure every time an enemy dies
+
 		if (Start_Health <= Half_Health) { // checking to see if the enemy health is less than or equal to 2
 			Enemy_Renderer.color = Color.red; // assinging the red color to the enemy
 		}
 
 		if (Start_Health <= 0) { // checking to see if the enemy has no life left
 		Destroy(gameObject); // destroy the enemy game object
+		Instantiate(Treasure_Drops[Treasure_Choose],transform.position,Quaternion.identity); // dropping the treasure in the place of the enemy when they die
 		}
 
 	}

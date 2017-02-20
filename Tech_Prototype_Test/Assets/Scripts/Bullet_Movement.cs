@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet_Movement : MonoBehaviour {
-
-	public float Move_Speed; // Creating a public gameobject to calculate the speed we want the bullet to move at
+	public static float Move_Speed = .2f; // Creating a public gameobject to calculate the speed we want the bullet to move at
 	 Rigidbody2D rb; // creating a rigidbody 2d variable to set later
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D>(); // setting our rigidbody variable
-		
 	}
 	
 	// Update is called once per frame

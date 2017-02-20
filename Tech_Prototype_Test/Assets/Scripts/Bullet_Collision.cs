@@ -19,6 +19,28 @@ public class Bullet_Collision : MonoBehaviour {
 			Destroy(gameObject); // making the bullet destroy itself
 		}
 
+		if (col.gameObject.tag == "Health_Boost") { //checking to see if the bullet is colliding with a heatlh pack
+			Destroy (gameObject); // making the bullet destroy itself
+		} 
+
+		if (col.gameObject.tag == "Treasure") { //checking to see if the bullet is colliding with a Treasure
+			Destroy (gameObject); // making the bullet destroy itself
+		}
+
+		if (col.gameObject.tag == "BulletSpeedUp") { //checking to see if the bullet is colliding with a Treasure
+			Destroy (gameObject); // making the bullet destroy itself
+		}
+		if (col.gameObject.tag == "BulletSpeedDown") { //checking to see if the bullet is colliding with a Treasure
+			Destroy (gameObject); // making the bullet destroy itself
+		}
+
+		if (col.gameObject.tag == "BulletSizeUp") { //checking to see if the bullet is colliding with a Treasure
+			Destroy (gameObject); // making the bullet destroy itself
+		}
+
+		if (col.gameObject.tag == "BulletSizeDown") { //checking to see if the bullet is colliding with a Treasure
+			Destroy (gameObject); // making the bullet destroy itself
+		}
 
 	}
 
