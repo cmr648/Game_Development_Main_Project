@@ -61,6 +61,11 @@ public class Health_Scaling : MonoBehaviour {
 	void Game_Over_Check ()
 	{ // creating our game over check function
 		if (Player_Current_Health == 0) { // checking to see if player health = 0
+
+
+			if (PlayerPrefs.GetFloat ("Highscore") < Treasure_Pickup.Player_Score) { // checking to see if our current highscore is less than the player score
+				PlayerPrefs.SetFloat ("Highscore", Treasure_Pickup.Player_Score); // setting the high score to our player score at the moment of death
+			}
 		SceneManager.LoadScene("Game_Over"); // loading our game over screen if the player health = 0
 		}
 

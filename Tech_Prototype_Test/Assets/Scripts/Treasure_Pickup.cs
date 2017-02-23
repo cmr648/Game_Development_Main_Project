@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Treasure_Pickup : MonoBehaviour {
 
-	float Player_Score; // creating a float for our player score
+	public static float Player_Score; // creating a float for our player score
 	public float treasureUP; // Creating a float for how much a piece of treasure raises the score by
 	public Text playertext; // creating a public variable for player text
 
@@ -13,7 +13,7 @@ public class Treasure_Pickup : MonoBehaviour {
 
 	void Start () {
 
-	Player_Score = 0; // setting the player score to 0 at the start of the game
+	//Player_Score = 0; // setting the player score to 0 at the start of the game
 
 	}
 	

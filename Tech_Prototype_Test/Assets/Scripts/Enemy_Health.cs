@@ -15,6 +15,8 @@ public class Enemy_Health : MonoBehaviour {
 
 	Enemy_Renderer = GetComponent<SpriteRenderer>(); // assigning the players sprite renderer to the enemy renderer at the start of the game
 	Half_Health = Start_Health/2; // setting half health to be half the player health
+
+	Dungeon_Clear_Checker.Enemy_Amount = Dungeon_Clear_Checker.Enemy_Amount +1; // adding one to the enemy amount for every enemy on screen
 		
 	}
 	
@@ -34,6 +36,7 @@ public class Enemy_Health : MonoBehaviour {
 
 		if (Start_Health <= 0) { // checking to see if the enemy has no life left
 		Destroy(gameObject); // destroy the enemy game object
+		Dungeon_Clear_Checker.Enemy_Amount = Dungeon_Clear_Checker.Enemy_Amount -1; // subtracting the enemy from the enemy amount variable
 		Instantiate(Treasure_Drops[Treasure_Choose],transform.position,Quaternion.identity); // dropping the treasure in the place of the enemy when they die
 		}
 
