@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Reset_Score : MonoBehaviour {
 
 	// Use this for initialization

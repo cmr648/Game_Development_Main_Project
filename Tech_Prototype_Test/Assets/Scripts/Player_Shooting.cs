@@ -10,8 +10,9 @@ public class Player_Shooting : MonoBehaviour {
 	SpriteRenderer bullet_renderer; // creating a bulletrenderer to take the sprite renderer of the bullet and edit it
 	Vector3 bulletSpawnPositionEdit;
 
+	Vector3 bulletNormalSize = new Vector3 (.3f,.3f,.3f); // creating a vector3 for the bullet normal size
 	Vector3 bulletHalfSize = new Vector3(.2f,.2f,.2f); // creating a vector3 for bullet half size
-	Vector3 bulletDoubleSize = new Vector3(.5f,.5f,5f); // creating a vector3 for bullet half size
+	Vector3 bulletDoubleSize = new Vector3(.5f,.5f,5f); // creating a vector3 for bullet double size
 	public float bulletSlow; // creating a float for our bullet on the slow powerup
 	public float bulletFast; // creating a float for our bullet on the slow powerup
 
@@ -19,10 +20,14 @@ public class Player_Shooting : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		bullet_renderer = Bullet.GetComponent<SpriteRenderer>(); // getting the sprite renderer of our bullet and applying it to the bullet renderer
 
 		bulletSpawnPositionEdit = new Vector3 (Bullet_Spawn_Position.transform.position.x, Bullet_Spawn_Position.transform.position.y, Bullet_Spawn_Position.transform.position.z+10); // setting the bullet spawn position every time a bullet is instantiated
-	}
+
+		bullet_renderer.color = Color.white; // setting the bullet to be white at the start of the game
+		Bullet.transform.localScale = bulletNormalSize; // setting the bullet to be normal size at the start of the game
+		}
 	
 	// Update is called once per frame
 	void Update ()

@@ -29,6 +29,8 @@ public class Enemy_Bullet_Collision : MonoBehaviour {
 			Destroy (gameObject); // making the bullet destroy itself
 		}
 
+	
+
 	}
 
 	void OnTriggerEnter2D (Collider2D col) // checking to see if the player is colliding with an objects
