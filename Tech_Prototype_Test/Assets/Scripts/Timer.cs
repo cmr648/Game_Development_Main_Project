@@ -41,7 +41,7 @@ public class Timer : MonoBehaviour {
 			Minutes += 1; // adding one to minutes
 		}
 
-		if (Minutes > 60) { // resetting minutes
+		if (Minutes >= 60) { // resetting minutes
 			Minutes = 0;
 			Hours += 1; //adding one to hours
 
