@@ -65,14 +65,17 @@ public class Health_Scaling : MonoBehaviour {
 
 			if (PlayerPrefs.GetFloat ("Highscore") < Treasure_Pickup.Player_Score) { // checking to see if our current highscore is less than the player score
 				PlayerPrefs.SetFloat ("Highscore", Treasure_Pickup.Player_Score); // setting the high score to our player score at the moment of death
+				PlayerPrefs.SetString("HighscoreTime",PlayerPrefs.GetString("PlayerTime")); // setting our high score time to our current player time
 			}
 
 			if (PlayerPrefs.GetFloat ("Highscore2") < Treasure_Pickup.Player_Score && Treasure_Pickup.Player_Score < PlayerPrefs.GetFloat("Highscore")) { // checking to see if our high score 2 is less than the player score and the current highest score and is greater than the 3rd highest score
 				PlayerPrefs.SetFloat ("Highscore2", Treasure_Pickup.Player_Score); // setting the high score 2 variable to our player score at the moment of death
+				PlayerPrefs.SetString("Highscore2Time",PlayerPrefs.GetString("PlayerTime"));  // setting our high score 2 time to our current player time
 			}
 
 			if (PlayerPrefs.GetFloat ("Highscore3") < Treasure_Pickup.Player_Score && Treasure_Pickup.Player_Score < PlayerPrefs.GetFloat("Highscore2")) { // checking to see if the high score 3 is less than player score and player score is less than high score 2
 				PlayerPrefs.SetFloat ("Highscore3", Treasure_Pickup.Player_Score); //  setting our high score 3 variable to our current player score
+				PlayerPrefs.SetString("Highscore3Time",PlayerPrefs.GetString("PlayerTime"));  // setting our high score 3 time to our current player time
 			}
 
 

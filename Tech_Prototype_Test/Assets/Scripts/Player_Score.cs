@@ -17,6 +17,9 @@ public class Player_Score : MonoBehaviour {
 	public Text Name_2; // creating a text for name one
 	public Text Name_3; // creating a text for name one
 
+	public Text High_Score_Time_Text; // creating a high score time text to edit
+	public Text High_Score_2_Time_Text; // creating a high score 2 time text to edit
+	public Text High_Score_3_Time_Text; // creating a high score 3 time text to edit
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +31,11 @@ public class Player_Score : MonoBehaviour {
 	High_Score_2_Text.text = PlayerPrefs.GetFloat ("Highscore2").ToString(); // assinging the high score 2 variable to our text
 
 	High_Score_3_Text.text = PlayerPrefs.GetFloat ("Highscore3").ToString(); // assinging the high score 3 variable to our text 
+
+
+	High_Score_Time_Text.text = PlayerPrefs.GetString("HighscoreTime"); // setting our high score time text to be the highest scoring time
+	High_Score_2_Time_Text.text = PlayerPrefs.GetString("Highscore2Time"); // setting our high score 2 time text to be the highest scoring time
+	High_Score_3_Time_Text.text = PlayerPrefs.GetString("Highscore3Time"); // setting our high score 3 time text to be the highest scoring time
 
 	Enter_Name.gameObject.SetActive(false); // setting the enter name field to be off at the start of the game over scree
 

@@ -29,10 +29,16 @@ public class Enemy_Random_Movement : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter2D (Collision2D col){ // checking to see if the gameobject has collided with something
+	void OnCollisionEnter2D (Collision2D col)
+	{ // checking to see if the gameobject has collided with something
 		if (col.gameObject.tag == "Wall" || col.gameObject.tag == "Enemy") { // checking to see if the gameobject that our gameobject is colliding with is a wall
 			Velocity = -Velocity; // reversing the velocity of the gameobject
 
+		}
+
+		if (col.gameObject.tag == "Final_Boundry") { //checking to see if the col.gameobject is the final boundry
+			Destroy(gameObject); // destroy the cube
+			Dungeon_Clear_Checker.Enemy_Amount = Dungeon_Clear_Checker.Enemy_Amount-1; //subtracing the enemy value from the dungeon clear checker
 		}
 
 	}

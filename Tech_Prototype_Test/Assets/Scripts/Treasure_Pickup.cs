@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Treasure_Pickup : MonoBehaviour {
 
 	public static float Player_Score; // creating a float for our player score
@@ -25,6 +26,7 @@ public class Treasure_Pickup : MonoBehaviour {
 	void FixedUpdate (){ // an update function that is called every frame
 		playertext.text = "Score: " + Player_Score; //adding our player score to the text field every frame
 		PlayerPrefs.SetFloat("CurrentScore", Player_Score);// setting our player score to be saved between levels
+
 
 	}
 
