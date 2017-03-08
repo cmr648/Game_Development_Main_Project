@@ -94,6 +94,7 @@
 'Assets/Scripts/Enemy_Spin.cs'
 'Assets/Scripts/Geo.cs'
 'Assets/Scripts/Health_Scaling.cs'
+'Assets/Scripts/Instructions_Load.cs'
 'Assets/Scripts/LoadLevel.cs'
 'Assets/Scripts/Player_Movement.cs'
 'Assets/Scripts/Player_Score.cs'

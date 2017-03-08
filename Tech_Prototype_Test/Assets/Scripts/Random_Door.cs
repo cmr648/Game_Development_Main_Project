@@ -13,7 +13,7 @@ public class Random_Door : MonoBehaviour {
 	{
 		Door_Renderer = GetComponent<SpriteRenderer> (); // taking the sprite renderer from our gameobjcet
 		Door_Collider = GetComponent<BoxCollider2D> (); // taking the box collider from our gameobject
-		Door_Chooser = Random.Range (0, 6); // assining our door chooser variable to be 50/50
+		Door_Chooser = Random.Range (0, 9); // assining our door chooser variable to be 50/50
 		if (Door_Chooser == 1) { // if the door chooser variable lands on 0
 			Door_Renderer.enabled = true; // turning the sprite renderer on
 			Door_Collider.enabled = true; // turning the box collider on

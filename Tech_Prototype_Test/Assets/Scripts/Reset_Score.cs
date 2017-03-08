@@ -12,6 +12,7 @@ public class Reset_Score : MonoBehaviour {
 		Timer.Seconds = 0; // setting our seconds to 0
 		Timer.Minutes = 0; // setting our minutes to 0
 		Timer.Hours = 0;  // setting our hours to 0
+		Dungeon_Clear_Checker.Enemy_Amount = 0; // setting the enemy amount to reset when the game restarts
 	}
 	
 	// Update is called once per frame
