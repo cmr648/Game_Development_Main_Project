@@ -10,9 +10,14 @@ public class Player_Movement : MonoBehaviour {
 	Vector2 PlayerInput; // Creating a vector2 to adjust on player input
 	Vector2 currentPlayerPos; //Creating a vector 2 for the current player position
 
+	public GameObject Pause_Panel; // creating a public gameobject for our pause panel
+	bool isPaused; // creating a boolean to check to see if the game is paused or not
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D>(); // setting our rb variable to the current rigidbody of the player
+		isPaused = false; // setting our is paused boolean to be false
+		Pause_Panel.SetActive(false); // turning our pause menu off at the start of the game
 	}
 	
 	// Update is called once per frame
@@ -20,6 +25,7 @@ public class Player_Movement : MonoBehaviour {
 	{
 		ArrowKeyMovement(); // implementing our player movement function
 		PlayerAngleMovement(); // implementing our player angle movement
+		PlayerPause(); // implementing our player pause script
 	}
 
 	void FixedUpdate(){ // an update function that runs on a time stamp rather than every rendered frame
@@ -62,6 +68,25 @@ public class Player_Movement : MonoBehaviour {
 		if (Input.GetKey (KeyCode.D)) { // checking to see if the D key has been pressed
 			transform.eulerAngles = new Vector3 (0,0,0); // Changing the angle of our player to be facing up 
 		} 
+	}
+
+	void PlayerPause ()
+	{ // setting up our player pause command
+
+		Pause_Panel.SetActive (isPaused); //setting our pause panel to be active on the toggle of if the game is pasued
+
+		if (Input.GetKeyDown (KeyCode.Escape)) { // checking to see if the escape key has been presed
+			isPaused = !isPaused; // toggleing our is paused bollean to be on/off
+		}
+
+		if (isPaused) { // checking to see if the game is paused
+			Time.timeScale = 0; // pausing the game by freezning time
+		}
+
+		if (!isPaused) { // checking to see if the game is not paused
+			Time.timeScale = 1; // setting our time to the normal speed
+		}
+
 	}
 
 }

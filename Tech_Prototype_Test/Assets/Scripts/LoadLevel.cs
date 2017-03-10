@@ -22,4 +22,8 @@ public string NextScene; // Creating a public scene to change the next scene we 
 		SceneManager.LoadScene(NextScene);  // loading a new scene in which we enter the scene publicly
 	}
 
+	public void QuitGame (){ // creating a public void for our quit game function
+		Application.Quit(); // quitting the application on this void
+	}
+
 }
