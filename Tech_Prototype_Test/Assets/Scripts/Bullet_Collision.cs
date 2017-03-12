@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Bullet_Collision : MonoBehaviour {
 
+
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -17,6 +17,7 @@ public class Bullet_Collision : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D col) { //a void that checks to see if the bullet has encoutered a collider
 		if (col.gameObject.tag == "Wall") { // checking to see if the bullet has encoutered a wall object
 			Destroy(gameObject); // making the bullet destroy itself
+			Destroy(gameObject.GetComponentInParent<GameObject>());
 		}
 
 		if (col.gameObject.tag == "Health_Boost") { //checking to see if the bullet is colliding with a heatlh pack

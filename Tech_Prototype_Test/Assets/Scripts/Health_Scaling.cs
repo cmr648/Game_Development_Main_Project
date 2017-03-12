@@ -11,6 +11,8 @@ public class Health_Scaling : MonoBehaviour {
 	public float Player_Health_Boost; // creating a public float to calculate the health boost that will be added to the player health
 	public float Player_Damage; // creating a public variable for player damage that the player will take;
 
+	public Animator Heart_Anim; // creatinga an animator for our heart beat UI element
+
 	// Use this for initialization
 	void Start () {
 		Player_Current_Health = Player_Total_Health; // setting the players current health to be equal to the players current health at the start of the game
@@ -25,6 +27,7 @@ public class Health_Scaling : MonoBehaviour {
 		Health_Bar.transform.localScale = new Vector3 ((Player_Current_Health/Player_Total_Health),1,1); // changing the scale of the health bar to change when taking damage
 		Damage_Bounds(); // implementing our damage bounds function
 		Game_Over_Check(); // implementing game over check
+		Animation_Speed(); // implementing our animation speed function
 	}
 
 	void OnCollisionEnter2D (Collision2D col)
@@ -86,5 +89,15 @@ public class Health_Scaling : MonoBehaviour {
 
 	}
 
+	void Animation_Speed ()
+	{ // creating a void to change the speed of our heart beat
+		if (Player_Current_Health > Player_Total_Health / 2) { // checking to see if the player has over 50% health
+			Heart_Anim.speed = 1; // setting the heart anim speed to be normal
+		} 
+		else { // if the player has below 50% health
+			Heart_Anim.speed = 2; // setting the heart anim speed to be faster
+		}
+
+	}
 
 }

@@ -8,15 +8,19 @@ public class Enemy_Shooting : MonoBehaviour {
 	public float Bullet_Time; // Creating a public float for the time it takes to shoot a bullet
 	public Transform Bullet_Pos; // creating a public transform for the bullet position
 
+
+
+
 	// Use this for initialization
 	void Start () {
 
-	InvokeRepeating ("Enemy_Fire",1.0f,Bullet_Time); // having the enemy fire function repeat a certain amount of times
-		
+	InvokeRepeating ("Enemy_Fire",.5f,Bullet_Time); // having the enemy fire function repeat a certain amount of times
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
 		
 	}
 
