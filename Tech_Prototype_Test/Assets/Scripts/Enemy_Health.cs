@@ -49,6 +49,7 @@ public class Enemy_Health : MonoBehaviour {
 		if (col.gameObject.tag == "Player_Bullet") { // checking to see if the collision was with a player bullet
 			Start_Health -= 1; // make the enemy lose health
 			Destroy(col.gameObject);// destroyt the player bullet
+			Player_Shooting.Bullet_Limit = Player_Shooting.Bullet_Limit -1; // subtracting 1 from the player bullet limit
 		}
 
 

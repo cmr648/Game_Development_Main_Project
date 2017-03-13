@@ -11,11 +11,13 @@ public class Skeleton_Health : MonoBehaviour {
 	public SpriteRenderer Enemy_Renderer; // Creating a variable to get the renderer of the enemy game object
 	public SpriteRenderer Top_Teeth_Renderer; // Creating a variable to get the rendeer of the top teeth
 	public SpriteRenderer Bottom_Teeth_Renderer; // creating a variable to get the renderer of the botoom teeth
+	public SpriteRenderer Eyebrows; // creating a variable to get the renderer of the eyebrows
 	public ParticleSystem Enemy_Death_Particle; //Creating a public enemy death particle system to instantiate upon death
 
 
 	// Use this for initialization
 	void Start () {
+	Eyebrows.enabled = false; // making the eyebrows invisible at the start of the game
 
 	//Enemy_Renderer = GetComponentInChildren<SpriteRenderer>(); // assigning the players sprite renderer to the enemy renderer at the start of the game
 	Half_Health = Start_Health/2; // setting half health to be half the player health
@@ -38,6 +40,7 @@ public class Skeleton_Health : MonoBehaviour {
 			Enemy_Renderer.color = Color.red; // assinging the red color to the enemy
 			Top_Teeth_Renderer.color = Color.red; // assinging the color red to the enemy top teeth
 			Bottom_Teeth_Renderer.color = Color.red; // Assigning the color red to the enemy bottom teeth
+			Eyebrows.enabled = true; // making the eyebrows visible
 		}
 
 		if (Start_Health <= 0) { // checking to see if the enemy has no life left
@@ -53,6 +56,7 @@ public class Skeleton_Health : MonoBehaviour {
 		if (col.gameObject.tag == "Player_Bullet") { // checking to see if the collision was with a player bullet
 			Start_Health -= 1; // make the enemy lose health
 			Destroy(col.gameObject);// destroyt the player bullet
+			Player_Shooting.Bullet_Limit = Player_Shooting.Bullet_Limit - 1; // subtracting one from our player shooting limit
 		}
 
 
