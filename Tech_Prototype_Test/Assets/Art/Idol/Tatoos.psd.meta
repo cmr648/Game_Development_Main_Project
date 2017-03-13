@@ -1,9 +1,16 @@
 fileFormatVersion: 2
-guid: 70f6a53c372034227b02439711e44bc7
-timeCreated: 1489189163
+guid: 7561e19f2a3fe45dba0ce448d5e156df
+timeCreated: 1489382750
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Tatoos_0
+    21300002: Tatoos_1
+    21300004: Tatoos_2
+    21300006: Tatoos_3
+    21300008: Tatoos_4
+    21300010: Tatoos_5
+    21300012: Tatoos_6
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -30,11 +37,11 @@ TextureImporter:
     filterMode: 0
     aniso: -1
     mipBias: -1
-    wrapMode: 0
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,7 +123,33 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Tatoos_4
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 63
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tatoos_0
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 52
+        width: 50
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
