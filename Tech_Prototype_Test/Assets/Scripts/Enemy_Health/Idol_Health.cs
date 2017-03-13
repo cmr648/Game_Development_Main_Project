@@ -9,18 +9,13 @@ public class Idol_Health : MonoBehaviour {
 	public GameObject[] Treasure_Drops; // creating a public list of gameobjects for the enemys to drop when they die
 	int Treasure_Choose; // creating a treasure chooser variable to choose the treasure that will be droped by an enemy
 	public SpriteRenderer Enemy_Renderer; // Creating a variable to get the renderer of the enemy game object
-	public SpriteRenderer Mouth_Renderer; // Creating a variable to get the renderer of the mouth of the enemy game object
-	public SpriteRenderer Top_Teeth_Renderer;// Creating a variable for our top teeth renderer
-	public SpriteRenderer Bottom_Teeth_Renderer; // Creating a variable for our bottom teeth renderer
-	public SpriteRenderer Eye_Renderer_Right; // Creatinga  renderer for our right eye
-	public SpriteRenderer Eye_Renderer_Left; // Creating a rendere for our left eye
+	public SpriteRenderer Top_Teeth_Renderer; // Creatinga a variable to get the renderer of our top teeth
+	public SpriteRenderer Bottom_Teeth_Renderer; // Creatinga  variable for our bottom teeth renderer
 	public ParticleSystem Enemy_Death_Particle; //Creating a public enemy death particle system to instantiate upon death
 
 
 	// Use this for initialization
 	void Start () {
-	Eye_Renderer_Left.color = Color.black; // setting our left eye to be black
-	Eye_Renderer_Right.color = Color.black; // setting our right eye to be black
 
 	Half_Health = Start_Health/2; // setting half health to be half the player health
 
@@ -39,12 +34,9 @@ public class Idol_Health : MonoBehaviour {
 		Treasure_Choose = Random.Range(0,Treasure_Drops.Length); // setting our treasure choose variable to be a different treasure every time an enemy dies
 
 		if (Start_Health <= Half_Health) { // checking to see if the enemy health is less than or equal to 2
-			Enemy_Renderer.color = Color.blue; // assinging the red color to the enemy
-			Mouth_Renderer.color = Color.black; // assinging the black color to the enemy mouth
-			Top_Teeth_Renderer.color = Color.red; // assinging a red color to the top teeth
-			Bottom_Teeth_Renderer.color = Color.red; // assinging a red color to the bottom teeth
-			Eye_Renderer_Right.color = Color.red; // assinging a red color to the right eye
-			Eye_Renderer_Left.color = Color.red; // assigining a red color to the left yee
+			Enemy_Renderer.color = Color.red; // assinging the red color to the enemy
+			Top_Teeth_Renderer.color = Color.red; // Assiging the red color to our top teeth
+			Bottom_Teeth_Renderer.color = Color.red; // assigning the red color to our bottom teeth
 		}
 
 		if (Start_Health <= 0) { // checking to see if the enemy has no life left
