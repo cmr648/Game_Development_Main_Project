@@ -7,7 +7,11 @@ public class Bullet_Movement : MonoBehaviour {
 	 Rigidbody2D rb; // creating a rigidbody 2d variable to set later
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
+		if (Move_Speed < 0) { // if move speed is a negative number
+		Move_Speed = -Move_Speed; // making move speed a positive number
+		}
 		rb = GetComponent<Rigidbody2D>(); // setting our rigidbody variable
 	}
 	

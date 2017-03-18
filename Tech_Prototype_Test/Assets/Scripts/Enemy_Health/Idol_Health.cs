@@ -51,8 +51,8 @@ public class Idol_Health : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D col)	{ // a void that checks to see if the enemy collided with soething
 		if (col.gameObject.tag == "Player_Bullet") { // checking to see if the collision was with a player bullet
 			Start_Health -= 1; // make the enemy lose health
-			Destroy(col.gameObject);// destroyt the player bullet
-			Player_Shooting.Bullet_Limit = Player_Shooting.Bullet_Limit -1; // subtracting 1 from the player bullet limit
+			Bullet_Movement.Move_Speed = -Bullet_Movement.Move_Speed; // reversing the boomerang speeds
+			//	Destroy(col.gameObject); // destroy the boomerang
 		}
 
 
