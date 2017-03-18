@@ -15,6 +15,7 @@ public class Player_Shooting : MonoBehaviour {
 	Vector3 bulletDoubleSize = new Vector3(2.3f,2.3f,2.3f); // creating a vector3 for bullet double size
 	public float bulletSlow; // creating a float for our bullet on the slow powerup
 	public float bulletFast; // creating a float for our bullet on the slow powerup
+	public float Bullet_Normal_Speed; // creating a float for our normal bullet speed
 
 	public Sprite Large_Boomerang; // creating a public sprite for our large boomerang
 	public Sprite Normal_Boomerang; // creating a public sprite for our normal boomerang
@@ -76,17 +77,24 @@ public class Player_Shooting : MonoBehaviour {
 //		}
 
 		if (col.gameObject.tag == "BulletSizeUp") { // if the player has collided with an arrow pickup 
-		Destroy(col.gameObject); // remove the pickup
-		Bullet.transform.localScale = bulletDoubleSize; // changing the size of the bullet to be twice as large
-		Bullet_Movement.Move_Speed = bulletSlow; // changing the speed of the bullet to be half speed
-		bullet_renderer.sprite = Large_Boomerang; // changing the bullet sprite to a large boomerang
+			Destroy (col.gameObject); // remove the pickup
+			Bullet.transform.localScale = bulletDoubleSize; // changing the size of the bullet to be twice as large
+			Bullet_Movement.Move_Speed = bulletSlow; // changing the speed of the bullet to be half speed
+			bullet_renderer.sprite = Large_Boomerang; // changing the bullet sprite to a large boomerang
 		}
 
 		if (col.gameObject.tag == "BulletSizeDown") { // if the player has collided with an arrow pickup 
-		Destroy(col.gameObject); // remove the pickup
-		Bullet.transform.localScale =  bulletHalfSize;  // changing the size of the bullet to be half
-		Bullet_Movement.Move_Speed = bulletFast; // changing the speed of the bullet to be *2
-		bullet_renderer.sprite = Small_Boomerang; // changing the bullet sprite to a small boomerang
+			Destroy (col.gameObject); // remove the pickup
+			Bullet.transform.localScale = bulletHalfSize;  // changing the size of the bullet to be half
+			Bullet_Movement.Move_Speed = bulletFast; // changing the speed of the bullet to be *2
+			bullet_renderer.sprite = Small_Boomerang; // changing the bullet sprite to a small boomerang
+		}
+
+		if (col.gameObject.tag == "BulletSizeNormal") { // if the player has collided with the normal size arrow pickup
+			Destroy(col.gameObject); // remove the pickup
+			Bullet.transform.localScale = bulletNormalSize; // changing the size of the bullet to be back to normal
+			Bullet_Movement.Move_Speed = Bullet_Normal_Speed; // changing the bullet speed to be back to normal
+			bullet_renderer.sprite = Normal_Boomerang; // changing the bullet renderers sprite to be back to a normal boomerang
 		}
 
 
