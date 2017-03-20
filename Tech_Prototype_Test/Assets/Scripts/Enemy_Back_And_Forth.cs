@@ -27,9 +27,10 @@ public class Enemy_Back_And_Forth : MonoBehaviour {
 	{ // a funciton that checks to see if a gameobject has collided with something
 
 		if (col.gameObject.tag == "Wall" || col.gameObject.tag == "Enemy") { // if the gameobject hits a wall or another enemy
-		Velocity = -Velocity; // reverse its velocity
+			Velocity = -Velocity; // reverse its velocity
 
 		}
+
 
 	}
 }
