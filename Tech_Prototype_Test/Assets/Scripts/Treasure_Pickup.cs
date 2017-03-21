@@ -10,6 +10,9 @@ public class Treasure_Pickup : MonoBehaviour {
 	public float treasureUP; // Creating a float for how much a piece of treasure raises the score by
 	public Text playertext; // creating a public variable for player text
 
+	public GameObject sound_Manager; // creatinig a public gameobject reference for our sound manager
+	public AudioClip Coin_Pickup; // creating a reference to our coin pickup
+
 	// Use this for initialization
 
 	void Start () {
@@ -36,6 +39,7 @@ public class Treasure_Pickup : MonoBehaviour {
 		if (col.gameObject.tag == "Treasure") { // checking to see if the plaer has collided with an average piece of treasure
 		Destroy(col.gameObject); // get rid of the piece of treasure
 		Player_Score = Player_Score + treasureUP; // adding treasure up to the player score once
+		sound_Manager.GetComponent<Sound>().Playsound(Coin_Pickup,1); // plays a sound when you pick up the coin
 		}
 
 	}

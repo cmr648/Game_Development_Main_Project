@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Enemy_Bullet_Collision : MonoBehaviour {
 
+	public GameObject Sound_Manager; // creating a public gameobject reference for our sound manager
+	public AudioClip Wall_Hit_Audio; // creating a public gameobject reference to our wall hit audio clip
+
 	// Use this for initialization
 	void Start () {
 
@@ -20,6 +23,7 @@ public class Enemy_Bullet_Collision : MonoBehaviour {
 	{ //a void that checks to see if the bullet has encoutered a collider
 		if (col.gameObject.tag == "Wall") { // checking to see if the bullet has encoutered a wall object
 			Destroy (gameObject); // making the bullet destroy itself
+			//Sound_Manager.GetComponent<Sound>().Playsound(Wall_Hit_Audio,1); // playing our wall hit sound
 		}
 
 		if (col.gameObject.tag == "Health_Boost") { //checking to see if the bullet is colliding with a heatlh pack

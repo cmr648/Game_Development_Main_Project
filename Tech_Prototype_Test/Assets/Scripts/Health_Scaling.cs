@@ -13,6 +13,9 @@ public class Health_Scaling : MonoBehaviour {
 
 	public Animator Heart_Anim; // creatinga an animator for our heart beat UI element
 
+	public GameObject sound_Manager; // creatinig a public gameobject reference for our sound manager
+	public AudioClip Health_Up; // creating a public audio clip for health going up
+
 	// Use this for initialization
 	void Start () {
 		Player_Current_Health = Player_Total_Health; // setting the players current health to be equal to the players current health at the start of the game
@@ -45,6 +48,7 @@ public class Health_Scaling : MonoBehaviour {
 		if (col.gameObject.tag == "Health_Boost") { // checking to see if the player is colliding with a health boost game object
 			Player_Current_Health += Player_Health_Boost; // adding the player health boost to the health bar
 			Destroy(col.gameObject); // get rid of the health pack upon using it one time
+			sound_Manager.GetComponent<Sound>().Playsound(Health_Up,1); // playing our health up sound
 		}
 
 	}

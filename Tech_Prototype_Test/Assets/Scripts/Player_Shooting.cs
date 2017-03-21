@@ -24,6 +24,8 @@ public class Player_Shooting : MonoBehaviour {
 	public static float Bullet_Limit;  // Creating a public static float of bullet limit to edit on screen at one time
 	public float Bullet_Amount; // Creating a public float for bullet amount that can be fired at once
 
+	public AudioClip[] Boomerang_Swoosh; // creatinga  public audio clip array for the boomerang swish sounds
+	public GameObject sound_Manager; // creatinig a public gameobject reference for our sound manager
 
 
 	// Use this for initialization
@@ -60,6 +62,8 @@ public class Player_Shooting : MonoBehaviour {
 		if (Bullet_Limit < Bullet_Amount) { // checking to see if our bullet limit is less than 3
 			Instantiate (Bullet, Bullet_Spawn_Position.transform.position, transform.rotation); // instantiating the bullet prefab when the WSAD keys are pressed
 			Bullet_Limit = Bullet_Limit +1; // adding 1 to our bullet limit
+
+			sound_Manager.GetComponent<Sound>().Playsound(Boomerang_Swoosh[Random.Range(0,Boomerang_Swoosh.Length)],1); // playing a random 1 of 3 boomerang sounds
 		}
 	}
 

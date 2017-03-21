@@ -36,5 +36,6 @@ public class Instructions_Load : MonoBehaviour {
 	Start_Game_Button.SetActive(true); // setting our start game button to be visible
 	Instructions_Show_Button.SetActive(true); // setting our instructions show button to be visible
 	Quit_Game_Button.SetActive(true); // setting our quit game button to be visible
+
 	}
 }

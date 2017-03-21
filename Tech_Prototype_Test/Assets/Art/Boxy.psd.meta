@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 931109a9f05b94a4ea13b2c322020b2d
-timeCreated: 1489981877
+timeCreated: 1490021060
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -124,10 +124,10 @@ TextureImporter:
       name: Boxy_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 64
-        width: 60
-        height: 60
+        x: 5
+        y: 62
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
