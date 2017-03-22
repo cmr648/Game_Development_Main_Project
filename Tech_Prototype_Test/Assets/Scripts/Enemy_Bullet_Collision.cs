@@ -10,7 +10,7 @@ public class Enemy_Bullet_Collision : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-
+	Sound_Manager = GameObject.FindGameObjectWithTag("Sound_Manager");
 		
 	}
 	

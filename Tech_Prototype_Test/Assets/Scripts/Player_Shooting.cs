@@ -25,6 +25,7 @@ public class Player_Shooting : MonoBehaviour {
 	public float Bullet_Amount; // Creating a public float for bullet amount that can be fired at once
 
 	public AudioClip[] Boomerang_Swoosh; // creatinga  public audio clip array for the boomerang swish sounds
+	public AudioClip Boomerang_Switch; // creating a public audio clip for switching boomerangs
 	public GameObject sound_Manager; // creatinig a public gameobject reference for our sound manager
 
 
@@ -85,6 +86,7 @@ public class Player_Shooting : MonoBehaviour {
 			Bullet.transform.localScale = bulletDoubleSize; // changing the size of the bullet to be twice as large
 			Bullet_Movement.Move_Speed = bulletSlow; // changing the speed of the bullet to be half speed
 			bullet_renderer.sprite = Large_Boomerang; // changing the bullet sprite to a large boomerang
+			sound_Manager.GetComponent<Sound>().Playsound(Boomerang_Switch,1); // playing our boomerang switch sound
 		}
 
 		if (col.gameObject.tag == "BulletSizeDown") { // if the player has collided with an arrow pickup 
@@ -92,6 +94,7 @@ public class Player_Shooting : MonoBehaviour {
 			Bullet.transform.localScale = bulletHalfSize;  // changing the size of the bullet to be half
 			Bullet_Movement.Move_Speed = bulletFast; // changing the speed of the bullet to be *2
 			bullet_renderer.sprite = Small_Boomerang; // changing the bullet sprite to a small boomerang
+			sound_Manager.GetComponent<Sound>().Playsound(Boomerang_Switch,1); // playing our boomerang switch sound
 		}
 
 		if (col.gameObject.tag == "BulletSizeNormal") { // if the player has collided with the normal size arrow pickup
@@ -99,6 +102,7 @@ public class Player_Shooting : MonoBehaviour {
 			Bullet.transform.localScale = bulletNormalSize; // changing the size of the bullet to be back to normal
 			Bullet_Movement.Move_Speed = Bullet_Normal_Speed; // changing the bullet speed to be back to normal
 			bullet_renderer.sprite = Normal_Boomerang; // changing the bullet renderers sprite to be back to a normal boomerang
+			sound_Manager.GetComponent<Sound>().Playsound(Boomerang_Switch,1); // playing our boomerang switch sound
 		}
 
 

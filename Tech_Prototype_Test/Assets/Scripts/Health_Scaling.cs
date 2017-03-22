@@ -102,6 +102,8 @@ public class Health_Scaling : MonoBehaviour {
 			Heart_Anim.speed = 2; // setting the heart anim speed to be faster
 		}
 
+	
+
 	}
 
 }

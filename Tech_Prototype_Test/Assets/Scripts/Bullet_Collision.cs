@@ -6,11 +6,14 @@ public class Bullet_Collision : MonoBehaviour {
 
 	public static float Bullet_Life; // creating a public float for bullet life
 
+	public GameObject Sound_Manager; // creating a public gameobject reference to our sound manager
+	public AudioClip[] Skeleton_Sound; // Creatinga  public gameobject reference to our list of skeleton sounds
 
 
 	// Use this for initialization
 	void Start () {
 
+	Sound_Manager = GameObject.FindGameObjectWithTag("Sound_Manager");
 
 	Bullet_Life = 3; // setting our initial value for bullet life
 	}
@@ -49,14 +52,14 @@ public class Bullet_Collision : MonoBehaviour {
 
 		if (col.gameObject.tag == "Player_Bullet") { // checking to see if it hits another player bullet object
 			//GetComponent<Bullet_Movement>().Player_Bullet_Move_Speed = -GetComponent<Bullet_Movement>().Player_Bullet_Move_Speed; // reversing our bullet speed
-			Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(),col.gameObject.GetComponent<Collider2D>());
+			Physics2D.IgnoreCollision (gameObject.GetComponent<Collider2D> (), col.gameObject.GetComponent<Collider2D> ());
 		}
 
 		if (col.gameObject.tag == "Player") {
-			Destroy(gameObject); // destroying the gameobject
-			Player_Shooting.Bullet_Limit -=1; // subtracting one from our bullet limit
+			Destroy (gameObject); // destroying the gameobject
+			Player_Shooting.Bullet_Limit -= 1; // subtracting one from our bullet limit
 			//Bullet_Movement.Move_Speed = -Bullet_Movement.Move_Speed; // reversing our bullet speed
-			GetComponent<Bullet_Movement>().Player_Bullet_Move_Speed = -GetComponent<Bullet_Movement>().Player_Bullet_Move_Speed; // reversing our bullet speed
+			GetComponent<Bullet_Movement> ().Player_Bullet_Move_Speed = -GetComponent<Bullet_Movement> ().Player_Bullet_Move_Speed; // reversing our bullet speed
 		}
 
 		if (col.gameObject.tag == "Health_Boost") { //checking to see if the bullet is colliding with a heatlh pack
@@ -91,6 +94,14 @@ public class Bullet_Collision : MonoBehaviour {
 		if (col.gameObject.tag == "BulletSizeNormal") { //checking to see if the bullet is colliding with a Treasure
 			Player_Shooting.Bullet_Limit -= 1; // subtracting one from our bullet limt
 			Destroy (gameObject); // making the bullet destroy itself
+		}
+
+
+		//DOING STUFF WITH SOUND
+
+		if (col.gameObject.tag == "Skeleton") { // checking to see if the gameobject has hit a skeleton
+			GetComponent<Bullet_Movement> ().Player_Bullet_Move_Speed = -GetComponent<Bullet_Movement> ().Player_Bullet_Move_Speed; // reversing our bullet speed
+			Sound_Manager.GetComponent<Sound>().Playsound(Skeleton_Sound[Random.Range(0,Skeleton_Sound.Length)],1); // playing a random sound of our skeleton sounds list
 		}
 
 
