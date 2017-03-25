@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement; 
+using UnityEngine.UI; // using a ui componemt
 
 public class Health_Scaling : MonoBehaviour {
 
@@ -16,6 +17,10 @@ public class Health_Scaling : MonoBehaviour {
 	public GameObject sound_Manager; // creatinig a public gameobject reference for our sound manager
 	public AudioClip Health_Up; // creating a public audio clip for health going up
 
+	public Image Fader; // creating a public image reference for our fader
+	public Animator Fader_Animator; // creating a public animator reference for our fader
+
+
 	// Use this for initialization
 	void Start () {
 		Player_Current_Health = Player_Total_Health; // setting the players current health to be equal to the players current health at the start of the game
@@ -26,17 +31,27 @@ public class Health_Scaling : MonoBehaviour {
 
 	}
 
-	void FixedUpdate(){ // an update function taht is called every frame instead of every rendered frame
-		Health_Bar.transform.localScale = new Vector3 ((Player_Current_Health/Player_Total_Health),1,1); // changing the scale of the health bar to change when taking damage
-		Damage_Bounds(); // implementing our damage bounds function
-		Game_Over_Check(); // implementing game over check
-		Animation_Speed(); // implementing our animation speed function
+	void FixedUpdate ()
+	{ // an update function taht is called every frame instead of every rendered frame
+		Health_Bar.transform.localScale = new Vector3 ((Player_Current_Health / Player_Total_Health), 1, 1); // changing the scale of the health bar to change when taking damage
+		Damage_Bounds (); // implementing our damage bounds function
+		Game_Over_Check (); // implementing game over check
+		Animation_Speed (); // implementing our animation speed function
+
+		if (Fader_Animator.GetBool ("Fade") == true) { // checking to see if our fader animator fade boolean variable is equal to true
+		Check_For_Black(); // then employing our check for black function
+		}
+
 	}
 
 	void OnCollisionEnter2D (Collision2D col)
 	{ //checking to see if the player is colliding with an object
 
 		if (col.gameObject.tag == "Enemy") { // checking to see if the player is colliding with an enemy game object
+			Player_Current_Health -= Player_Damage; // subtracting the player damage from the health bar
+		}
+
+		if (col.gameObject.tag == "Skeleton") { // checking to see if the player is colliding with a skeleton game object
 			Player_Current_Health -= Player_Damage; // subtracting the player damage from the health bar
 		}
 
@@ -86,9 +101,9 @@ public class Health_Scaling : MonoBehaviour {
 			}
 
 
-	
+			Fader_Animator.SetBool("Fade",true); // setting our fade boolean to true to make the animator fader fade out
 
-		SceneManager.LoadScene("Game_Over"); // loading our game over screen if the player health = 0
+	//	SceneManager.LoadScene("Game_Over"); // loading our game over screen if the player health = 0
 		}
 
 	}
@@ -105,5 +120,12 @@ public class Health_Scaling : MonoBehaviour {
 	
 
 	}
+
+	void Check_For_Black (){ // creating another check for black void just like in load level
+		if (Fader.GetComponent<Image> ().color.a == 1) {  // checking to see if our faders colors alpha value is equal to 1
+			SceneManager.LoadScene("Game_Over");  // loading a new scene in which we enter the scene publicly
+		}
+	}
+
 
 }

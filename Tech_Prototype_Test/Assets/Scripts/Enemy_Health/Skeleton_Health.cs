@@ -15,15 +15,18 @@ public class Skeleton_Health : MonoBehaviour {
 	public ParticleSystem Enemy_Death_Particle; //Creating a public enemy death particle system to instantiate upon death
 
 
+
 	// Use this for initialization
 	void Start () {
+
+
 	Eyebrows.enabled = false; // making the eyebrows invisible at the start of the game
 
 	//Enemy_Renderer = GetComponentInChildren<SpriteRenderer>(); // assigning the players sprite renderer to the enemy renderer at the start of the game
 	Half_Health = Start_Health/2; // setting half health to be half the player health
 
-	Dungeon_Clear_Checker.Enemy_Amount = Dungeon_Clear_Checker.Enemy_Amount +1; // adding one to the enemy amount for every enemy on screen
-		
+	Dungeon_Clear_Checker.Enemy_Amount = Dungeon_Clear_Checker.Enemy_Amount + 1; // adding one to the enemy amount for every enemy on screen
+
 	}
 	
 	// Update is called once per frame

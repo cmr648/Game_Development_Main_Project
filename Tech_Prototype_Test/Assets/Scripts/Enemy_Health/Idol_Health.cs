@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Idol_Health : MonoBehaviour {
 
 	public float Start_Health; // the health that an enemy will start with
@@ -14,13 +15,14 @@ public class Idol_Health : MonoBehaviour {
 	public ParticleSystem Enemy_Death_Particle; //Creating a public enemy death particle system to instantiate upon death
 
 
+
 	// Use this for initialization
 	void Start () {
 
 	Half_Health = Start_Health/2; // setting half health to be half the player health
 
-	Dungeon_Clear_Checker.Enemy_Amount = Dungeon_Clear_Checker.Enemy_Amount +1; // adding one to the enemy amount for every enemy on screen
-		
+	Dungeon_Clear_Checker.Enemy_Amount = Dungeon_Clear_Checker.Enemy_Amount + 1; // adding one to the enemy amount for every enemy on screen
+				
 	}
 	
 	// Update is called once per frame

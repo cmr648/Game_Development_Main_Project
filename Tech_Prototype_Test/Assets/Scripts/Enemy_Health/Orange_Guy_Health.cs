@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Orange_Guy_Health : MonoBehaviour {
 
 	public float Start_Health; // the health that an enemy will start with
@@ -13,24 +14,34 @@ public class Orange_Guy_Health : MonoBehaviour {
 	public SpriteRenderer Bottom_Teeth_Renderer; // creating a variable to get the renderer of the botoom teeth
 	public ParticleSystem Enemy_Death_Particle; //Creating a public enemy death particle system to instantiate upon death
 
+	GameObject player; // creating a public gameobject reference to the player 
 
 	// Use this for initialization
 	void Start () {
+	player = GameObject.FindGameObjectWithTag("Player"); // finding the player gameobject in our scene
+
+	Top_Teeth_Renderer.GetComponent<Animator>().speed = .5f; // setting our top teeth renderer to animate at half speed
+	Bottom_Teeth_Renderer.GetComponent<Animator>().speed = .5f; // setting our bottom teeth rendeer to animate at half speed 
 
 	//Enemy_Renderer = GetComponentInChildren<SpriteRenderer>(); // assigning the players sprite renderer to the enemy renderer at the start of the game
 	Half_Health = Start_Health/2; // setting half health to be half the player health
 
-	Dungeon_Clear_Checker.Enemy_Amount = Dungeon_Clear_Checker.Enemy_Amount +1; // adding one to the enemy amount for every enemy on screen
-		
+	Dungeon_Clear_Checker.Enemy_Amount = Dungeon_Clear_Checker.Enemy_Amount + 1; // adding one to the enemy amount for every enemy on screen
+				
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+//		transform.right = Player.transform.position - transform.position;
 	}
 
 	void FixedUpdate () // an update function that is called every frame
 	{
+		// ROTATING CODE
+		Vector3 Direction = (player.transform.position - transform.position); //creating a vector 3 to get the direction that the orange enemy should be rotating
+		float Direction_Angle = Mathf.Atan2(Direction.y,Direction.x)*Mathf.Rad2Deg; // taking our direction and converting its magnitude and angles from radians to degrees
+		transform.rotation = Quaternion.AngleAxis(Direction_Angle,Vector3.forward); // changing the transform.rotation t our new direction in degrees
+	
 
 		Treasure_Choose = Random.Range(0,Treasure_Drops.Length); // setting our treasure choose variable to be a different treasure every time an enemy dies
 
@@ -47,6 +58,7 @@ public class Orange_Guy_Health : MonoBehaviour {
 		Dungeon_Clear_Checker.Enemy_Amount = Dungeon_Clear_Checker.Enemy_Amount -1; // subtracting the enemy from the enemy amount variable
 		Instantiate(Treasure_Drops[Treasure_Choose],transform.position,Quaternion.identity); // dropping the treasure in the place of the enemy when they die
 		}
+
 
 	}
 
