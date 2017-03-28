@@ -18,7 +18,7 @@ public class Player_Movement : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>(); // setting our rb variable to the current rigidbody of the player
 		isPaused = false; // setting our is paused boolean to be false
 		Pause_Panel.SetActive(false); // turning our pause menu off at the start of the game
-	}
+		}
 	
 	// Update is called once per frame
 	void Update ()
@@ -38,18 +38,17 @@ public class Player_Movement : MonoBehaviour {
 	{ //creating a void to register commands to the arrow keys
 		PlayerInput = Vector2.zero;
 		if (Input.GetKey (KeyCode.UpArrow)) { // checking to see if the up arrow key has been pressed
-			PlayerInput += new Vector2 (0,1); // setting the player input vector 2 to the up direction
+			PlayerInput += new Vector2 (0, 1); // setting the player input vector 2 to the up direction
 		} 
 		if (Input.GetKey (KeyCode.DownArrow)) { // checking to see if the down arrow key has been pressed
-			PlayerInput += new Vector2(0, -1); // setting the player input vector 2 to the down direction
-		}
+			PlayerInput += new Vector2 (0, -1); // setting the player input vector 2 to the down direction
+		} 
 		if (Input.GetKey (KeyCode.LeftArrow)) { // checking to see if the left arrow key has been pressed
-			PlayerInput += new Vector2(-1, 0); // setting the player input vector 2 to the left direction
-		}
+			PlayerInput += new Vector2 (-1, 0); // setting the player input vector 2 to the left direction
+		} 
 		if (Input.GetKey (KeyCode.RightArrow)) { // checking to see if the right arrow key has been pressed
-			PlayerInput += new Vector2(1,0); // setting the player input vector 2 to the right direction
-		}
-
+			PlayerInput += new Vector2 (1, 0); // setting the player input vector 2 to the right direction
+		} 
 	}
 
 	void PlayerAngleMovement(){
