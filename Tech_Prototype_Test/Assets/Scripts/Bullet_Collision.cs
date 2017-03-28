@@ -6,7 +6,7 @@ public class Bullet_Collision : MonoBehaviour {
 
 	public static float Bullet_Life; // creating a public float for bullet life
 
-	public GameObject Sound_Manager; // creating a public gameobject reference to our sound manager
+	GameObject Sound_Manager; // creating a public gameobject reference to our sound manager
 	public AudioClip[] Skeleton_Sound; // Creatinga  public gameobject reference to our list of skeleton sounds
 
 

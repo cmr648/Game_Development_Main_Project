@@ -5,12 +5,12 @@ using UnityEngine;
 public class Player_Shooting : MonoBehaviour {
 
 	public GameObject Bullet; // Creating a public game object to add our bullet prefab
-	public GameObject Bullet_Spawn_Position; // Creating a public game object to set our bullet spawn position to
+	GameObject Bullet_Spawn_Position; // Creating a public game object to set our bullet spawn position to
 	public float Bullet_Time; // Cretaing a delay that the bullets will be fired upon
 	SpriteRenderer bullet_renderer; // creating a bulletrenderer to take the sprite renderer of the bullet and edit it
 	Vector3 bulletSpawnPositionEdit;
 
-	Vector3 bulletNormalSize = new Vector3 (2.0f,2.0f,2.0f); // creating a vector3 for the bullet normal size
+	Vector3 bulletNormalSize = new Vector3 (1.9f,1.9f,1.9f); // creating a vector3 for the bullet normal size
 	Vector3 bulletHalfSize = new Vector3(1.4f,1.4f,1.4f); // creating a vector3 for bullet half size
 	Vector3 bulletDoubleSize = new Vector3(2.3f,2.3f,2.3f); // creating a vector3 for bullet double size
 	public float bulletSlow; // creating a float for our bullet on the slow powerup
@@ -28,6 +28,15 @@ public class Player_Shooting : MonoBehaviour {
 	public AudioClip Boomerang_Switch; // creating a public audio clip for switching boomerangs
 	public GameObject sound_Manager; // creatinig a public gameobject reference for our sound manager
 
+	public GameObject Up_Bullet_Spawn_Position; // creating a public gameobject reference to our up bullet spawn position
+	public GameObject Down_Bullet_Spawn_Position; // creating a public gameobject reference to our down bullet spawn position
+	public GameObject Left_Bullet_Spawn_Position; // creating a public gameobject reference to our left bullet spawn position
+	public GameObject Right_Bullet_Spawn_Position; // creating a public gameobject reference to our right bullet spawn position
+
+
+	void Awake(){ // creating a function from the start of the machine bieng awake even be for start
+		Bullet.transform.localScale = bulletNormalSize; // setting the bullet transform local scale to be bullet normal size
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -37,7 +46,7 @@ public class Player_Shooting : MonoBehaviour {
 		bulletSpawnPositionEdit = new Vector3 (Bullet_Spawn_Position.transform.position.x, Bullet_Spawn_Position.transform.position.y, Bullet_Spawn_Position.transform.position.z+10); // setting the bullet spawn position every time a bullet is instantiated
 
 		bullet_renderer.color = Color.white; // setting the bullet to be white at the start of the game
-		Bullet.transform.localScale = bulletNormalSize; // setting the bullet to be normal size at the start of the game
+		Bullet.transform.localScale =  bulletNormalSize; // setting the bullet to be normal size at the start of the game
 
 		Bullet_Limit = 0; // setting our bullet limit
 
@@ -46,6 +55,7 @@ public class Player_Shooting : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+			//Pick_Bullet_Spawn_Position(); // setting up pick bullet spawn position
 
 			if (Input.GetKeyDown (KeyCode.W) || Input.GetKeyDown (KeyCode.S) || Input.GetKeyDown (KeyCode.D) || Input.GetKeyDown (KeyCode.A)) { // an if statement that checks to see if the WSAD keys have been pressed
 				InvokeRepeating ("Fire_Bullet", 0, Bullet_Time); // repeating our fire bullet function to make the player fire on a delay
@@ -58,15 +68,45 @@ public class Player_Shooting : MonoBehaviour {
 
 	}
 
+	void FixedUpdate(){
+		//Pick_Bullet_Spawn_Position();
+	}
+
 	void Fire_Bullet ()
 	{ // creating our fire bullet function
-		if (Bullet_Limit < Bullet_Amount) { // checking to see if our bullet limit is less than 3
-			Instantiate (Bullet, Bullet_Spawn_Position.transform.position, transform.rotation); // instantiating the bullet prefab when the WSAD keys are pressed
-			Bullet_Limit = Bullet_Limit +1; // adding 1 to our bullet limit
+//		if (Bullet_Limit < Bullet_Amount) { // checking to see if our bullet limit is less than 3
+//			Instantiate (Bullet, Bullet_Spawn_Position.transform.position, Bullet_Spawn_Position.transform.rotation); // instantiating the bullet prefab when the WSAD keys are pressed
+//			Bullet_Limit = Bullet_Limit +1; // adding 1 to our bullet limit
+//
+//			sound_Manager.GetComponent<Sound>().Playsound(Boomerang_Swoosh[Random.Range(0,Boomerang_Swoosh.Length)],1); // playing a random 1 of 3 boomerang sounds
 
+		if (Player_Movement.Player_Bullet_Spawn_Position == 1 && Bullet_Limit < Bullet_Amount) { // checking to see if player bullet spawn position = 1
+			Instantiate (Bullet, Up_Bullet_Spawn_Position.transform.position, Up_Bullet_Spawn_Position.transform.rotation); // instantiating the bullet prefab when the WSAD keys are pressed
+			Bullet_Limit = Bullet_Limit +1; // adding 1 to our bullet limit
 			sound_Manager.GetComponent<Sound>().Playsound(Boomerang_Swoosh[Random.Range(0,Boomerang_Swoosh.Length)],1); // playing a random 1 of 3 boomerang sounds
 		}
-	}
+
+		if (Player_Movement.Player_Bullet_Spawn_Position == 2 && Bullet_Limit < Bullet_Amount) { // checking to see if player bullet spawn position = 1
+			Instantiate (Bullet, Right_Bullet_Spawn_Position.transform.position, Right_Bullet_Spawn_Position.transform.rotation); // instantiating the bullet prefab when the WSAD keys are pressed
+			Bullet_Limit = Bullet_Limit +1; // adding 1 to our bullet limit
+			sound_Manager.GetComponent<Sound>().Playsound(Boomerang_Swoosh[Random.Range(0,Boomerang_Swoosh.Length)],1); // playing a random 1 of 3 boomerang sounds
+		}
+
+		if (Player_Movement.Player_Bullet_Spawn_Position == 3 && Bullet_Limit < Bullet_Amount) { // checking to see if player bullet spawn position = 1
+			Instantiate (Bullet, Down_Bullet_Spawn_Position.transform.position, Down_Bullet_Spawn_Position.transform.rotation); // instantiating the bullet prefab when the WSAD keys are pressed
+			Bullet_Limit = Bullet_Limit +1; // adding 1 to our bullet limit
+			sound_Manager.GetComponent<Sound>().Playsound(Boomerang_Swoosh[Random.Range(0,Boomerang_Swoosh.Length)],1); // playing a random 1 of 3 boomerang sounds
+		}
+		if (Player_Movement.Player_Bullet_Spawn_Position == 4 && Bullet_Limit < Bullet_Amount) { // checking to see if player bullet spawn position = 1
+			Instantiate (Bullet, Left_Bullet_Spawn_Position.transform.position, Left_Bullet_Spawn_Position.transform.rotation); // instantiating the bullet prefab when the WSAD keys are pressed
+			Bullet_Limit = Bullet_Limit +1; // adding 1 to our bullet limit
+			sound_Manager.GetComponent<Sound>().Playsound(Boomerang_Swoosh[Random.Range(0,Boomerang_Swoosh.Length)],1); // playing a random 1 of 3 boomerang sounds
+		}
+
+
+		}
+	
+
 
 
 	void OnCollisionEnter2D (Collision2D col)
@@ -108,6 +148,26 @@ public class Player_Shooting : MonoBehaviour {
 
 
 
+
+	}
+
+	void Pick_Bullet_Spawn_Position ()
+	{ // creating a function to help pick the bullet spawn position
+		if (Player_Movement.Player_Bullet_Spawn_Position == 1) { // checking to see if player bullet spawn position = 1
+		Bullet_Spawn_Position = Up_Bullet_Spawn_Position; // changing it to up bullet spawn position
+		}
+
+		if (Player_Movement.Player_Bullet_Spawn_Position == 2) { // checking to see if player bullet spawn position = 2
+		Bullet_Spawn_Position =  Right_Bullet_Spawn_Position; // changing it to right bullet spawn position
+		}
+
+		if (Player_Movement.Player_Bullet_Spawn_Position == 3) { // checking to see if player bullet spawn position = 3
+		Bullet_Spawn_Position = Down_Bullet_Spawn_Position; // changing it to down bullet spawn position
+		}
+
+		if (Player_Movement.Player_Bullet_Spawn_Position == 4) { // checking to see if player bullet spawn position = 4
+		Bullet_Spawn_Position = Left_Bullet_Spawn_Position; // changing it to left bullet spawn position
+		}
 
 	}
 

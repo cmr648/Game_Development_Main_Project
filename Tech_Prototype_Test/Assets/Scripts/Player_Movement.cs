@@ -13,11 +13,23 @@ public class Player_Movement : MonoBehaviour {
 	public GameObject Pause_Panel; // creating a public gameobject for our pause panel
 	bool isPaused; // creating a boolean to check to see if the game is paused or not
 
+	public static float Player_Bullet_Spawn_Position; // creating a public statci float reference to our player spawn position
+
+	public Sprite Down_Sprite; // creating a public sprite reference to our down sprite
+	public Sprite Up_Sprite; // creating a public sprite reference to our up sprite
+	public Sprite Left_Sprite; // creating a public sprite reference to our left sprite
+	public Sprite Right_Sprite; // creating a public sprite reference to our right sprite
+
+	SpriteRenderer Player_Renderer; // creating a reference to our player sprite renderer
+
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D>(); // setting our rb variable to the current rigidbody of the player
 		isPaused = false; // setting our is paused boolean to be false
 		Pause_Panel.SetActive(false); // turning our pause menu off at the start of the game
+
+		Player_Renderer = GetComponent<SpriteRenderer>(); // assigning the players sprite renderer to our player renderer reference
 		}
 	
 	// Update is called once per frame
@@ -53,19 +65,50 @@ public class Player_Movement : MonoBehaviour {
 
 	void PlayerAngleMovement(){
 		if (Input.GetKey (KeyCode.W)) { // checking to see if the W key has been pressed
-			transform.eulerAngles = new Vector3 (0,0,90); // Changing the angle of our player to be facing up 
+		//	transform.eulerAngles = new Vector3 (0,0,90); // Changing the angle of our player to be facing up 
+			Player_Renderer.sprite = Up_Sprite; // assinging the up sprite to our player
+			Player_Bullet_Spawn_Position = 1; // setting our player bullet spawn position to be equal to 1
+			Destroy(GetComponent<PolygonCollider2D>()); // destroying our polygonal collider and adding it back immidiatly
+ 			gameObject.AddComponent<PolygonCollider2D>();
+
+			Destroy(GetComponent<BoxCollider2D>()); // destroying our box collider and adding it back immidiatly
+ 			gameObject.AddComponent<BoxCollider2D>();
+
+
 		} 
 
 		if (Input.GetKey (KeyCode.S)) { // checking to see if the S key has been pressed
-			transform.eulerAngles = new Vector3 (0,0,-90); // Changing the angle of our player to be facing up 
-		} 
+		//	transform.eulerAngles = new Vector3 (0,0,-90); // Changing the angle of our player to be facing up 
+			Player_Renderer.sprite = Down_Sprite; // assigning the down sprite to our player
+			Player_Bullet_Spawn_Position = 3; // setting our player bullet spawn position to be equal to 3
+			Destroy(GetComponent<PolygonCollider2D>()); // destroying our polygonal collider and adding it back immidiatly
+ 			gameObject.AddComponent<PolygonCollider2D>();
+
+			Destroy(GetComponent<BoxCollider2D>()); // destroying our box collider and adding it back immidiatly
+ 			gameObject.AddComponent<BoxCollider2D>();
+
+ 			} 
 
 		if (Input.GetKey (KeyCode.A)) { // checking to see if the A key has been pressed
-			transform.eulerAngles = new Vector3 (0,0,180); // Changing the angle of our player to be facing up 
+			//transform.eulerAngles = new Vector3 (0,0,180); // Changing the angle of our player to be facing up 
+			Player_Renderer.sprite = Left_Sprite; // assigning the left sprite to our player
+			Player_Bullet_Spawn_Position = 4; // setting our player bullet spawn position to be equal to 4
+			Destroy(GetComponent<PolygonCollider2D>()); // destroying our polygonal collider and adding it back immidiatly
+ 			gameObject.AddComponent<PolygonCollider2D>();
+
+			Destroy(GetComponent<BoxCollider2D>()); // destroying our box collider and adding it back immidiatly
+ 			gameObject.AddComponent<BoxCollider2D>();
 		} 
 
 		if (Input.GetKey (KeyCode.D)) { // checking to see if the D key has been pressed
-			transform.eulerAngles = new Vector3 (0,0,0); // Changing the angle of our player to be facing up 
+			//transform.eulerAngles = new Vector3 (0,0,0); // Changing the angle of our player to be facing up 
+			Player_Renderer.sprite = Right_Sprite; // assigning the right sprite to our player
+			Player_Bullet_Spawn_Position = 2; // setting our player bullet spawn position to be equal to 2
+			Destroy(GetComponent<PolygonCollider2D>()); // destroying our polygonal collider and adding it back immidiatly
+ 			gameObject.AddComponent<PolygonCollider2D>();
+
+			Destroy(GetComponent<BoxCollider2D>()); // destroying our box collider and adding it back immidiatly
+ 			gameObject.AddComponent<BoxCollider2D>();
 		} 
 	}
 

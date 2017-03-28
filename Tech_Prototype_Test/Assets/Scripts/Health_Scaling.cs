@@ -20,10 +20,13 @@ public class Health_Scaling : MonoBehaviour {
 	public Image Fader; // creating a public image reference for our fader
 	public Animator Fader_Animator; // creating a public animator reference for our fader
 
+	SpriteRenderer Player_Renderer; // creating a reference to our player renderer
+
 
 	// Use this for initialization
 	void Start () {
 		Player_Current_Health = Player_Total_Health; // setting the players current health to be equal to the players current health at the start of the game
+		Player_Renderer = GetComponent<SpriteRenderer>(); // assigning the players sprite renderer to player renderer
 	}
 	
 	// Update is called once per frame
@@ -49,19 +52,23 @@ public class Health_Scaling : MonoBehaviour {
 
 		if (col.gameObject.tag == "Enemy") { // checking to see if the player is colliding with an enemy game object
 			Player_Current_Health -= Player_Damage; // subtracting the player damage from the health bar
+			StartCoroutine("Color_Change_Damage"); // begining our color change damage IENuemerator
 		}
 
 		if (col.gameObject.tag == "Skeleton") { // checking to see if the player is colliding with a skeleton game object
 			Player_Current_Health -= Player_Damage; // subtracting the player damage from the health bar
+			StartCoroutine("Color_Change_Damage"); // begining our color change damage IENuemerator
 		}
 
 		if (col.gameObject.tag == "Enemy_Bullet") { // checking to see if the player is colliding with an enemy bullet game object
 			Player_Current_Health -= Player_Damage; // subtracting the player damage from the health bar
+			StartCoroutine("Color_Change_Damage"); // begining our color change damage IENuemerator
 			Destroy(col.gameObject); // destroy the bullet
 		};
 
 		if (col.gameObject.tag == "Health_Boost") { // checking to see if the player is colliding with a health boost game object
 			Player_Current_Health += Player_Health_Boost; // adding the player health boost to the health bar
+			StartCoroutine("Color_Change_Health"); // begining our color change health IEnumerator
 			Destroy(col.gameObject); // get rid of the health pack upon using it one time
 			sound_Manager.GetComponent<Sound>().Playsound(Health_Up,1); // playing our health up sound
 		}
@@ -125,6 +132,18 @@ public class Health_Scaling : MonoBehaviour {
 		if (Fader.GetComponent<Image> ().color.a == 1) {  // checking to see if our faders colors alpha value is equal to 1
 			SceneManager.LoadScene("Game_Over");  // loading a new scene in which we enter the scene publicly
 		}
+	}
+
+	IEnumerator Color_Change_Damage(){ // creating a color change sequence 
+	Player_Renderer.color = Color.red; // changing the color to red
+	yield return new WaitForSeconds (.1f); // waiting one second
+	Player_Renderer.color = Color.white; // changing the color back to normal
+	}
+
+	IEnumerator Color_Change_Health(){ // creating a color change sequence 
+	Player_Renderer.color = Color.green; // changing the color to red
+	yield return new WaitForSeconds (.1f); // waiting one second
+	Player_Renderer.color = Color.white; // changing the color back to normal
 	}
 
 
