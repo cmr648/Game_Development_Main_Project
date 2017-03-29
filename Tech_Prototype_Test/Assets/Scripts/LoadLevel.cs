@@ -16,9 +16,13 @@ public Image Fader; // creating a reference to the image fader
 
 public string NextScene; // Creating a public scene to change the next scene we go to 
 
+	GameObject Sound_Manager; // Creating a public gameobject reference to our sound manager
+	public AudioClip Load_Level_Audio; // Creating a public audio clip for load level
+
 	// Use this for initialization
 	void Start () {
 	Debug.Log(Fader.GetComponent<Image>().color.a); // logging our fader component to check its alpha
+	Sound_Manager = GameObject.FindGameObjectWithTag("Sound_Manager"); // Finding the sound Manager
 	}
 	
 	// Update is called once per frame
@@ -34,6 +38,8 @@ public string NextScene; // Creating a public scene to change the next scene we 
 	public void LevelLoad (){ // creating a public void to accesss in a UI button
 		Fader_Animator.SetBool("Fade",true); // setting our animator boolean variable to be equal to true
 		//SceneManager.LoadScene(NextScene);  // loading a new scene in which we enter the scene publicly
+		Sound_Manager.GetComponent<Sound>().Playsound(Load_Level_Audio,1); // playing the Load_Level_Sound
+
 	}
 
 	public void QuitGame (){ // creating a public void for our quit game function
