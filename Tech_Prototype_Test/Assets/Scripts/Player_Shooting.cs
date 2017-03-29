@@ -8,7 +8,6 @@ public class Player_Shooting : MonoBehaviour {
 	GameObject Bullet_Spawn_Position; // Creating a public game object to set our bullet spawn position to
 	public float Bullet_Time; // Cretaing a delay that the bullets will be fired upon
 	SpriteRenderer bullet_renderer; // creating a bulletrenderer to take the sprite renderer of the bullet and edit it
-	Vector3 bulletSpawnPositionEdit;
 
 	Vector3 bulletNormalSize = new Vector3 (1.9f,1.9f,1.9f); // creating a vector3 for the bullet normal size
 	Vector3 bulletHalfSize = new Vector3(1.4f,1.4f,1.4f); // creating a vector3 for bullet half size
@@ -22,7 +21,7 @@ public class Player_Shooting : MonoBehaviour {
 	public Sprite Small_Boomerang; // creating a public sprite for our small boomerang
 
 	public static float Bullet_Limit;  // Creating a public static float of bullet limit to edit on screen at one time
-	public float Bullet_Amount; // Creating a public float for bullet amount that can be fired at once
+	public float Bullet_Amount; // Creating float for bullet amount that can be fired at once
 
 	public AudioClip[] Boomerang_Swoosh; // creatinga  public audio clip array for the boomerang swish sounds
 	public AudioClip Boomerang_Switch; // creating a public audio clip for switching boomerangs
@@ -36,6 +35,7 @@ public class Player_Shooting : MonoBehaviour {
 
 	void Awake(){ // creating a function from the start of the machine bieng awake even be for start
 		Bullet.transform.localScale = bulletNormalSize; // setting the bullet transform local scale to be bullet normal size
+
 	}
 
 	// Use this for initialization
@@ -43,12 +43,17 @@ public class Player_Shooting : MonoBehaviour {
 
 		bullet_renderer = Bullet.GetComponentInChildren<SpriteRenderer>(); // getting the sprite renderer of our bullet and applying it to the bullet renderer
 		bullet_renderer.sprite = Normal_Boomerang; // setting our bullet rendeer sprite to be the normal boomerang at the start of the game
-		bulletSpawnPositionEdit = new Vector3 (Bullet_Spawn_Position.transform.position.x, Bullet_Spawn_Position.transform.position.y, Bullet_Spawn_Position.transform.position.z+10); // setting the bullet spawn position every time a bullet is instantiated
 
 		bullet_renderer.color = Color.white; // setting the bullet to be white at the start of the game
 		Bullet.transform.localScale =  bulletNormalSize; // setting the bullet to be normal size at the start of the game
+		Bullet_Movement.Move_Speed = Bullet_Normal_Speed; // changing the bullet speed to be back to normal
+
 
 		Bullet_Limit = 0; // setting our bullet limit
+
+
+
+
 
 		}
 	

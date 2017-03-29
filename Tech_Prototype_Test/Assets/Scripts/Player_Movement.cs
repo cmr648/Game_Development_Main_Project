@@ -70,9 +70,7 @@ public class Player_Movement : MonoBehaviour {
 			Player_Bullet_Spawn_Position = 1; // setting our player bullet spawn position to be equal to 1
 			Destroy(GetComponent<PolygonCollider2D>()); // destroying our polygonal collider and adding it back immidiatly
  			gameObject.AddComponent<PolygonCollider2D>();
-
-			Destroy(GetComponent<BoxCollider2D>()); // destroying our box collider and adding it back immidiatly
- 			gameObject.AddComponent<BoxCollider2D>();
+ 		
 
 
 		} 
@@ -84,8 +82,6 @@ public class Player_Movement : MonoBehaviour {
 			Destroy(GetComponent<PolygonCollider2D>()); // destroying our polygonal collider and adding it back immidiatly
  			gameObject.AddComponent<PolygonCollider2D>();
 
-			Destroy(GetComponent<BoxCollider2D>()); // destroying our box collider and adding it back immidiatly
- 			gameObject.AddComponent<BoxCollider2D>();
 
  			} 
 
@@ -96,8 +92,6 @@ public class Player_Movement : MonoBehaviour {
 			Destroy(GetComponent<PolygonCollider2D>()); // destroying our polygonal collider and adding it back immidiatly
  			gameObject.AddComponent<PolygonCollider2D>();
 
-			Destroy(GetComponent<BoxCollider2D>()); // destroying our box collider and adding it back immidiatly
- 			gameObject.AddComponent<BoxCollider2D>();
 		} 
 
 		if (Input.GetKey (KeyCode.D)) { // checking to see if the D key has been pressed
@@ -107,8 +101,6 @@ public class Player_Movement : MonoBehaviour {
 			Destroy(GetComponent<PolygonCollider2D>()); // destroying our polygonal collider and adding it back immidiatly
  			gameObject.AddComponent<PolygonCollider2D>();
 
-			Destroy(GetComponent<BoxCollider2D>()); // destroying our box collider and adding it back immidiatly
- 			gameObject.AddComponent<BoxCollider2D>();
 		} 
 	}
 
