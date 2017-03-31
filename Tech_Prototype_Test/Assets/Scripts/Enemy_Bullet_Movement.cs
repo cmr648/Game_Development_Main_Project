@@ -18,7 +18,7 @@ public class Enemy_Bullet_Movement : MonoBehaviour {
 
 
 	void FixedUpdate (){ // a void that will allow a command to be called on a timestamp instead of every rendered frame
-		Debug.Log((Geo.ToVector3(transform.eulerAngles.z) * Enemy_Bullet_Move_Speed)); // checking the move speed
+		//Debug.Log((Geo.ToVector3(transform.eulerAngles.z) * Enemy_Bullet_Move_Speed)); // checking the move speed
 		rb.MovePosition(transform.position + (Geo.ToVector3(transform.eulerAngles.z) * Enemy_Bullet_Move_Speed)); // moving the position of the rigid body based on the angle of the player
 
 	}

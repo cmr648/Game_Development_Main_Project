@@ -8,6 +8,7 @@ public class Sound : MonoBehaviour {
 	public GameObject audio_Source; // creating a public audio source to edit
 	public AudioSource[] Audio_Sources; // creating an array of audio sources
 
+
 	// Use this for initialization
 	void Start ()
 	{

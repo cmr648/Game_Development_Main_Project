@@ -22,11 +22,13 @@ public class Health_Scaling : MonoBehaviour {
 
 	SpriteRenderer Player_Renderer; // creating a reference to our player renderer
 
+	GameObject Background_Music; // Creating a gameobject reference to background music
 
 	// Use this for initialization
 	void Start () {
 		Player_Current_Health = Player_Total_Health; // setting the players current health to be equal to the players current health at the start of the game
 		Player_Renderer = GetComponent<SpriteRenderer>(); // assigning the players sprite renderer to player renderer
+		Background_Music = GameObject.FindGameObjectWithTag("Background_Music"); // finding the background music gameobject
 	}
 	
 	// Update is called once per frame
@@ -110,7 +112,9 @@ public class Health_Scaling : MonoBehaviour {
 
 			Fader_Animator.SetBool("Fade",true); // setting our fade boolean to true to make the animator fader fade out
 
-	//	SceneManager.LoadScene("Game_Over"); // loading our game over screen if the player health = 0
+			Destroy(Background_Music); // Destroying our background music gameobject
+
+		//	SceneManager.LoadScene("Game_Over"); // loading our game over screen if the player health = 0
 		}
 
 	}

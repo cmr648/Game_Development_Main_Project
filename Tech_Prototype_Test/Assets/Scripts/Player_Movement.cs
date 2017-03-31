@@ -22,6 +22,8 @@ public class Player_Movement : MonoBehaviour {
 
 	SpriteRenderer Player_Renderer; // creating a reference to our player sprite renderer
 
+	CircleCollider2D Player_Collider; // making a public object to later reference the players circle collider 2d
+
 
 	// Use this for initialization
 	void Start () {
@@ -30,6 +32,8 @@ public class Player_Movement : MonoBehaviour {
 		Pause_Panel.SetActive(false); // turning our pause menu off at the start of the game
 
 		Player_Renderer = GetComponent<SpriteRenderer>(); // assigning the players sprite renderer to our player renderer reference
+		Player_Collider = GetComponent<CircleCollider2D>(); // assigning the players circle collider 2d to the player collider reference
+
 		}
 	
 	// Update is called once per frame
@@ -68,8 +72,7 @@ public class Player_Movement : MonoBehaviour {
 		//	transform.eulerAngles = new Vector3 (0,0,90); // Changing the angle of our player to be facing up 
 			Player_Renderer.sprite = Up_Sprite; // assinging the up sprite to our player
 			Player_Bullet_Spawn_Position = 1; // setting our player bullet spawn position to be equal to 1
-			Destroy(GetComponent<PolygonCollider2D>()); // destroying our polygonal collider and adding it back immidiatly
- 			gameObject.AddComponent<PolygonCollider2D>();
+			Player_Collider.offset = new Vector2(0,0); // setting the player collider ofsett to be centered
  		
 
 
@@ -79,8 +82,7 @@ public class Player_Movement : MonoBehaviour {
 		//	transform.eulerAngles = new Vector3 (0,0,-90); // Changing the angle of our player to be facing up 
 			Player_Renderer.sprite = Down_Sprite; // assigning the down sprite to our player
 			Player_Bullet_Spawn_Position = 3; // setting our player bullet spawn position to be equal to 3
-			Destroy(GetComponent<PolygonCollider2D>()); // destroying our polygonal collider and adding it back immidiatly
- 			gameObject.AddComponent<PolygonCollider2D>();
+			Player_Collider.offset = new Vector2(0,0); // setting the player colllider offset to be centered
 
 
  			} 
@@ -89,8 +91,7 @@ public class Player_Movement : MonoBehaviour {
 			//transform.eulerAngles = new Vector3 (0,0,180); // Changing the angle of our player to be facing up 
 			Player_Renderer.sprite = Left_Sprite; // assigning the left sprite to our player
 			Player_Bullet_Spawn_Position = 4; // setting our player bullet spawn position to be equal to 4
-			Destroy(GetComponent<PolygonCollider2D>()); // destroying our polygonal collider and adding it back immidiatly
- 			gameObject.AddComponent<PolygonCollider2D>();
+			Player_Collider.offset = new Vector2(.11f,0); // setting the player collider to have a left offsett
 
 		} 
 
@@ -98,8 +99,7 @@ public class Player_Movement : MonoBehaviour {
 			//transform.eulerAngles = new Vector3 (0,0,0); // Changing the angle of our player to be facing up 
 			Player_Renderer.sprite = Right_Sprite; // assigning the right sprite to our player
 			Player_Bullet_Spawn_Position = 2; // setting our player bullet spawn position to be equal to 2
-			Destroy(GetComponent<PolygonCollider2D>()); // destroying our polygonal collider and adding it back immidiatly
- 			gameObject.AddComponent<PolygonCollider2D>();
+			Player_Collider.offset = new Vector2(-.11f,0); // setting the player collider to have a right offsett
 
 		} 
 	}

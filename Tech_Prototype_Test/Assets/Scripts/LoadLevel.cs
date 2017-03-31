@@ -10,6 +10,9 @@ public class LoadLevel : MonoBehaviour {
 public Animator Fader_Animator; // creating a reference to the faders animator
 public Image Fader; // creating a reference to the image fader 
 
+public AudioSource Background_Music; // creating a public reference to our audio source
+
+
 
 //public Image Fader; // creating a reference to our fader image object
 //public Animator Fader_animator; // creaing a public reference to our fader animator
@@ -30,6 +33,7 @@ public string NextScene; // Creating a public scene to change the next scene we 
 	{
 		if (Fader_Animator.GetBool ("Fade") == true) { // checking to see if in the animator our fade transition bool is ewual to true
 		Check_for_Black(); // then we can use our check for black function
+		Background_Music.volume -= .55f*Time.deltaTime; // fading out out our song
 		}
 
 		
@@ -39,7 +43,6 @@ public string NextScene; // Creating a public scene to change the next scene we 
 		Fader_Animator.SetBool("Fade",true); // setting our animator boolean variable to be equal to true
 		//SceneManager.LoadScene(NextScene);  // loading a new scene in which we enter the scene publicly
 		Sound_Manager.GetComponent<Sound>().Playsound(Load_Level_Audio,1); // playing the Load_Level_Sound
-
 	}
 
 	public void QuitGame (){ // creating a public void for our quit game function
