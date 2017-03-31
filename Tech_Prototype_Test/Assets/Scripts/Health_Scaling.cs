@@ -114,6 +114,7 @@ public class Health_Scaling : MonoBehaviour {
 
 			Destroy(Background_Music); // Destroying our background music gameobject
 
+
 		//	SceneManager.LoadScene("Game_Over"); // loading our game over screen if the player health = 0
 		}
 
