@@ -8,7 +8,7 @@ public class Bullet_Collision : MonoBehaviour {
 
 	GameObject Sound_Manager; // creating a public gameobject reference to our sound manager
 	public AudioClip[] Skeleton_Sound; // Creatinga  public gameobject reference to our list of skeleton sounds
-
+	public AudioClip[] Stone_Sound; // creating a public gamepnkect reference to our list of skeleton sounds
 
 	// Use this for initialization
 	void Start () {
@@ -44,6 +44,7 @@ public class Bullet_Collision : MonoBehaviour {
 
 		if (col.gameObject.tag == "Enemy") { // checking to see if the player has hit an enemy
 			GetComponent<Bullet_Movement> ().Player_Bullet_Move_Speed = -GetComponent<Bullet_Movement> ().Player_Bullet_Move_Speed; // reversing our bullet speed
+			Sound_Manager.GetComponent<Sound>().Playsound(Stone_Sound[Random.Range(0,Stone_Sound.Length)],1); // playing a random stone sound from our stone sound array
 			//	Bullet_Movement.Move_Speed = -Bullet_Movement.Move_Speed; // reversing our bullet speed
 			//	Bullet_Life = Bullet_Life - 1; // subtract 1 from bullet life
 			//Bullet_Movement.Move_Speed = -Bullet_Movement.Move_Speed; // reversing our bullet speed

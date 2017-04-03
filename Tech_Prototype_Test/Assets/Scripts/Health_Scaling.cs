@@ -16,6 +16,8 @@ public class Health_Scaling : MonoBehaviour {
 
 	public GameObject sound_Manager; // creatinig a public gameobject reference for our sound manager
 	public AudioClip Health_Up; // creating a public audio clip for health going up
+	public AudioClip Death_Audio; // creatina  public audio clip to play when we die
+	public AudioClip Player_Damage_Audio; // creating a public audio clip reference for when the player takes damage
 
 	public Image Fader; // creating a public image reference for our fader
 	public Animator Fader_Animator; // creating a public animator reference for our fader
@@ -23,6 +25,10 @@ public class Health_Scaling : MonoBehaviour {
 	SpriteRenderer Player_Renderer; // creating a reference to our player renderer
 
 	GameObject Background_Music; // Creating a gameobject reference to background music
+
+	public Sprite Character_Death_Sprite; // creating a public sprite reference for our character
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -109,10 +115,20 @@ public class Health_Scaling : MonoBehaviour {
 				PlayerPrefs.SetString("Highscore3Time",PlayerPrefs.GetString("PlayerTime"));  // setting our high score 3 time to our current player time
 			}
 
+			Player_Renderer.color = Color.red; // changing the player color to red
+			GetComponent<Player_Movement>().enabled = false ; // turning off player movement
+			GetComponent<Player_Shooting>().enabled = false ; // turning off player shooting
+			GetComponent<SpriteRenderer>().sprite = Character_Death_Sprite; // setting our character death to be our death sprite
+			Destroy(GetComponent<Rigidbody2D>()); // destroying our rigidbody2d
 
 			Fader_Animator.SetBool("Fade",true); // setting our fade boolean to true to make the animator fader fade out
 
+		
+
+			//Sound.Main_Sound.Playsound(Death_Audio,1);
+
 			Destroy(Background_Music); // Destroying our background music gameobject
+			sound_Manager.GetComponent<Sound>().Playsound(Death_Audio,.5f); // playing our death audio sound
 
 
 		//	SceneManager.LoadScene("Game_Over"); // loading our game over screen if the player health = 0
@@ -140,6 +156,7 @@ public class Health_Scaling : MonoBehaviour {
 	}
 
 	IEnumerator Color_Change_Damage(){ // creating a color change sequence 
+	sound_Manager.GetComponent<Sound>().Playsound(Player_Damage_Audio,1); // playing the player damage audio sound
 	Player_Renderer.color = Color.red; // changing the color to red
 	yield return new WaitForSeconds (.1f); // waiting one second
 	Player_Renderer.color = Color.white; // changing the color back to normal
