@@ -24,6 +24,7 @@ public class Player_Movement : MonoBehaviour {
 
 	CircleCollider2D Player_Collider; // making a public object to later reference the players circle collider 2d
 
+	AudioSource Background_Music_For_Pause; // creating a background music source for pausing
 
 	// Use this for initialization
 	void Start () {
@@ -33,6 +34,8 @@ public class Player_Movement : MonoBehaviour {
 
 		Player_Renderer = GetComponent<SpriteRenderer>(); // assigning the players sprite renderer to our player renderer reference
 		Player_Collider = GetComponent<CircleCollider2D>(); // assigning the players circle collider 2d to the player collider reference
+
+		Background_Music_For_Pause = GameObject.FindGameObjectWithTag("Background_Music").GetComponent<AudioSource>(); // assining our background music for pause gameobject to the current background music
 
 		}
 	
@@ -47,7 +50,6 @@ public class Player_Movement : MonoBehaviour {
 	void FixedUpdate(){ // an update function that runs on a time stamp rather than every rendered frame
 		currentPlayerPos = new Vector2(transform.position.x,transform.position.y); // resetting the current player position on fixed update
 		rb.MovePosition(currentPlayerPos + PlayerInput*playerspeed); //moving the position of the player every time
-
 	}
 
 	void ArrowKeyMovement ()
@@ -115,10 +117,15 @@ public class Player_Movement : MonoBehaviour {
 
 		if (isPaused) { // checking to see if the game is paused
 			Time.timeScale = 0; // pausing the game by freezning time
+			Background_Music_For_Pause.Pause(); // pausing our background music
 		}
 
 		if (!isPaused) { // checking to see if the game is not paused
 			Time.timeScale = 1; // setting our time to the normal speed
+			if (Background_Music_For_Pause.isPlaying == false) { // checking to see if our background music is not currently playing playing
+				Background_Music_For_Pause.Play(); // turning the music back on
+			}
+
 		}
 
 	}

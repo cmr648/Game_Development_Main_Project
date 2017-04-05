@@ -13,6 +13,7 @@ public class Idol_Health : MonoBehaviour {
 	public SpriteRenderer Top_Teeth_Renderer; // Creatinga a variable to get the renderer of our top teeth
 	public SpriteRenderer Bottom_Teeth_Renderer; // Creatinga  variable for our bottom teeth renderer
 	public ParticleSystem Enemy_Death_Particle; //Creating a public enemy death particle system to instantiate upon death
+	public ParticleSystem Enemy_Damage_Particle; // creating a public enemy damage particle system to instantiate upon damage
 
 
 
@@ -54,6 +55,7 @@ public class Idol_Health : MonoBehaviour {
 		if (col.gameObject.tag == "Player_Bullet") { // checking to see if the collision was with a player bullet
 			Start_Health -= 1; // make the enemy lose health
 			Bullet_Movement.Move_Speed = -Bullet_Movement.Move_Speed; // reversing the boomerang speeds
+			Instantiate(Enemy_Damage_Particle,transform.position,Quaternion.identity); // instantiating the enemy damage particle system upon damage
 			//	Destroy(col.gameObject); // destroy the boomerang
 		}
 

@@ -118,6 +118,7 @@ public class Health_Scaling : MonoBehaviour {
 			Player_Renderer.color = Color.red; // changing the player color to red
 			GetComponent<Player_Movement>().enabled = false ; // turning off player movement
 			GetComponent<Player_Shooting>().enabled = false ; // turning off player shooting
+			GetComponent<Hands>().enabled = false; // turning off the hands script
 			GetComponent<SpriteRenderer>().sprite = Character_Death_Sprite; // setting our character death to be our death sprite
 			Destroy(GetComponent<Rigidbody2D>()); // destroying our rigidbody2d
 
@@ -128,7 +129,7 @@ public class Health_Scaling : MonoBehaviour {
 			//Sound.Main_Sound.Playsound(Death_Audio,1);
 
 			Destroy(Background_Music); // Destroying our background music gameobject
-			sound_Manager.GetComponent<Sound>().Playsound(Death_Audio,.5f); // playing our death audio sound
+			sound_Manager.GetComponent<Sound>().Playsound(Death_Audio,1); // playing our death audio sound
 
 
 		//	SceneManager.LoadScene("Game_Over"); // loading our game over screen if the player health = 0

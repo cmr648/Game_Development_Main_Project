@@ -15,6 +15,7 @@ public class Box_Health : MonoBehaviour {
 	public SpriteRenderer Left_Bottom_Eye; // Creating a variable to get the rendeer of left bottom eye
 	public SpriteRenderer Eyebrows; // creating a variable to get the renderer of the eyebrows
 	public ParticleSystem Enemy_Death_Particle; //Creating a public enemy death particle system to instantiate upon death
+	public ParticleSystem Enemy_Damage_Particle; // creating a public enemy damage particle system to instantiate upon damage
 
 
 	// Use this for initialization
@@ -62,6 +63,8 @@ public class Box_Health : MonoBehaviour {
 		if (col.gameObject.tag == "Player_Bullet") { // checking to see if the collision was with a player bullet
 			Start_Health -= 1; // make the enemy lose health
 			Bullet_Movement.Move_Speed = -Bullet_Movement.Move_Speed; // reversing the boomerang speed
+			Instantiate(Enemy_Damage_Particle,transform.position,Quaternion.identity); // instantiating the enemy damage particle system upon damage
+
 			//	Destroy(col.gameObject); // destroy the boomerang
 		}
 
