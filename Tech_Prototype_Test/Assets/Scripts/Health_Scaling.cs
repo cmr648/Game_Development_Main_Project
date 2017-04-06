@@ -150,7 +150,7 @@ public class Health_Scaling : MonoBehaviour {
 	}
 
 	void Check_For_Black (){ // creating another check for black void just like in load level
-		if (Fader.GetComponent<Image> ().color.a == 1) {  // checking to see if our faders colors alpha value is equal to 1
+		if (Fader.GetComponent<Image> ().color.a == 1 && Player_Current_Health == 0) {  // checking to see if our faders colors alpha value is equal to 1 and the player current health is nothing
 			SceneManager.LoadScene("Game_Over");  // loading a new scene in which we enter the scene publicly
 		}
 	}
