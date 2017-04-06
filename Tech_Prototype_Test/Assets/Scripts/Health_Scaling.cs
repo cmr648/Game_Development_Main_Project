@@ -30,6 +30,7 @@ public class Health_Scaling : MonoBehaviour {
 
 
 
+
 	// Use this for initialization
 	void Start () {
 		Player_Current_Health = Player_Total_Health; // setting the players current health to be equal to the players current health at the start of the game
@@ -102,36 +103,34 @@ public class Health_Scaling : MonoBehaviour {
 
 			if (PlayerPrefs.GetFloat ("Highscore") < Treasure_Pickup.Player_Score) { // checking to see if our current highscore is less than the player score
 				PlayerPrefs.SetFloat ("Highscore", Treasure_Pickup.Player_Score); // setting the high score to our player score at the moment of death
-				PlayerPrefs.SetString("HighscoreTime",PlayerPrefs.GetString("PlayerTime")); // setting our high score time to our current player time
+				PlayerPrefs.SetString ("HighscoreTime", PlayerPrefs.GetString ("PlayerTime")); // setting our high score time to our current player time
 			}
 
-			if (PlayerPrefs.GetFloat ("Highscore2") < Treasure_Pickup.Player_Score && Treasure_Pickup.Player_Score < PlayerPrefs.GetFloat("Highscore")) { // checking to see if our high score 2 is less than the player score and the current highest score and is greater than the 3rd highest score
+			if (PlayerPrefs.GetFloat ("Highscore2") < Treasure_Pickup.Player_Score && Treasure_Pickup.Player_Score < PlayerPrefs.GetFloat ("Highscore")) { // checking to see if our high score 2 is less than the player score and the current highest score and is greater than the 3rd highest score
 				PlayerPrefs.SetFloat ("Highscore2", Treasure_Pickup.Player_Score); // setting the high score 2 variable to our player score at the moment of death
-				PlayerPrefs.SetString("Highscore2Time",PlayerPrefs.GetString("PlayerTime"));  // setting our high score 2 time to our current player time
+				PlayerPrefs.SetString ("Highscore2Time", PlayerPrefs.GetString ("PlayerTime"));  // setting our high score 2 time to our current player time
 			}
 
-			if (PlayerPrefs.GetFloat ("Highscore3") < Treasure_Pickup.Player_Score && Treasure_Pickup.Player_Score < PlayerPrefs.GetFloat("Highscore2")) { // checking to see if the high score 3 is less than player score and player score is less than high score 2
+			if (PlayerPrefs.GetFloat ("Highscore3") < Treasure_Pickup.Player_Score && Treasure_Pickup.Player_Score < PlayerPrefs.GetFloat ("Highscore2")) { // checking to see if the high score 3 is less than player score and player score is less than high score 2
 				PlayerPrefs.SetFloat ("Highscore3", Treasure_Pickup.Player_Score); //  setting our high score 3 variable to our current player score
-				PlayerPrefs.SetString("Highscore3Time",PlayerPrefs.GetString("PlayerTime"));  // setting our high score 3 time to our current player time
+				PlayerPrefs.SetString ("Highscore3Time", PlayerPrefs.GetString ("PlayerTime"));  // setting our high score 3 time to our current player time
 			}
 
 			Player_Renderer.color = Color.red; // changing the player color to red
-			GetComponent<Player_Movement>().enabled = false ; // turning off player movement
-			GetComponent<Player_Shooting>().enabled = false ; // turning off player shooting
-			GetComponent<Hands>().enabled = false; // turning off the hands script
-			GetComponent<SpriteRenderer>().sprite = Character_Death_Sprite; // setting our character death to be our death sprite
-			Destroy(GetComponent<Rigidbody2D>()); // destroying our rigidbody2d
+			GetComponent<Player_Movement> ().enabled = false; // turning off player movement
+			GetComponent<Player_Shooting> ().enabled = false; // turning off player shooting
+			GetComponent<Hands> ().enabled = false; // turning off the hands script
+			GetComponent<SpriteRenderer> ().sprite = Character_Death_Sprite; // setting our character death to be our death sprite
+			Destroy (GetComponent<Rigidbody2D> ()); // destroying our rigidbody2d
 
-			Fader_Animator.SetBool("Fade",true); // setting our fade boolean to true to make the animator fader fade out
+			Fader_Animator.SetBool ("Fade", true); // setting our fade boolean to true to make the animator fader fade out
 
 		
 
 			//Sound.Main_Sound.Playsound(Death_Audio,1);
 
-			Destroy(Background_Music); // Destroying our background music gameobject
-			sound_Manager.GetComponent<Sound>().Playsound(Death_Audio,1); // playing our death audio sound
-
-
+			Destroy (Background_Music); // Destroying our background music gameobject
+			sound_Manager.GetComponent<Sound> ().Playsound (Death_Audio, 1); // playing our death audio sound
 		//	SceneManager.LoadScene("Game_Over"); // loading our game over screen if the player health = 0
 		}
 
@@ -168,6 +167,7 @@ public class Health_Scaling : MonoBehaviour {
 	yield return new WaitForSeconds (.1f); // waiting one second
 	Player_Renderer.color = Color.white; // changing the color back to normal
 	}
+
 
 
 }

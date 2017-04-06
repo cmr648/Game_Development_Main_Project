@@ -12,6 +12,8 @@ public Image Fader; // creating a reference to the image fader
 
 public AudioSource Background_Music; // creating a public reference to our audio source
 
+public float Volume_Decrease; // creating a public float to decrease the volume by
+
 
 
 //public Image Fader; // creating a reference to our fader image object
@@ -33,7 +35,7 @@ public string NextScene; // Creating a public scene to change the next scene we 
 	{
 		if (Fader_Animator.GetBool ("Fade") == true) { // checking to see if in the animator our fade transition bool is ewual to true
 		Check_for_Black(); // then we can use our check for black function
-		Background_Music.volume -= .55f*Time.deltaTime; // fading out out our song
+		Background_Music.volume -= Volume_Decrease *Time.deltaTime; // fading out out our song
 		}
 
 		
