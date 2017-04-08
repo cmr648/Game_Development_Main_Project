@@ -10,6 +10,7 @@ public class Instructions_Load : MonoBehaviour {
 	public GameObject Instructions_Show_Button; // setting up a public gameobject for our showing instructions show button
 	public GameObject Quit_Game_Button; // setting up a public game object for our quit game button
 	public GameObject Show_Credits_Button; // Setting up a public game object for our show credits button
+	public GameObject Mute_Button; // settting up a public game object reference for our mute button
 
 	GameObject Sound_Manager; // Creating a public gameobject reference to our sound manager
 	public AudioClip Load_Level; // Creating a public audio clip for load level
@@ -36,6 +37,7 @@ public class Instructions_Load : MonoBehaviour {
 	Instructions_Show_Button.SetActive(false); // setting our instructions show button to be invisible
 	Quit_Game_Button.SetActive(false); // setting our start game button to be invisible
 	Show_Credits_Button.SetActive(false); // setting our show credits button to be off
+	Mute_Button.SetActive(false); // setting our mute button to be off
 
 	Sound_Manager.GetComponent<Sound>().Playsound(Show_UI,1); // playing the show ui sound
 
@@ -47,6 +49,7 @@ public class Instructions_Load : MonoBehaviour {
 	Instructions_Show_Button.SetActive(true); // setting our instructions show button to be visible
 	Quit_Game_Button.SetActive(true); // setting our quit game button to be visible
 	Show_Credits_Button.SetActive(true); // setting our show credits button to be on
+	Mute_Button.SetActive(true); // turning our mute button back on
 
 	Sound_Manager.GetComponent<Sound>().Playsound(Hide_UI,1); // playing the Hide ui sound
 

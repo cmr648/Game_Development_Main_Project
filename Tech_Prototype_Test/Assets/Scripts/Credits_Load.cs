@@ -9,6 +9,7 @@ public class Credits_Load : MonoBehaviour {
 	public GameObject Instructions_Show_Button; // Creating a public gameobejct reference to our instructions show button
 	public GameObject Credits_Panel; // Creating a public gameobject reference to our credits panel
 	public GameObject Credits_Button; // creating a public gameobject reference to ourselves
+	public GameObject Mute_Button; // creating a public gameobject reference to our mute button
 
 	GameObject Sound_Manager; // Creating a public gameobject reference to our sound manager
 	public AudioClip Load_Level; // Creating a public audio clip for load level
@@ -36,6 +37,7 @@ public class Credits_Load : MonoBehaviour {
 	Quit_Game_Button.SetActive(false); // Setting our Quit game button to be off
 	Instructions_Show_Button.SetActive(false); // setting our instructions button to be off
 	Credits_Button.SetActive(false); // setting our credits button to be off
+	Mute_Button.SetActive(false); // turning off our mute button
 	Sound_Manager.GetComponent<Sound>().Playsound(Show_UI,1); // playing the show ui sound
 
 	}
@@ -46,6 +48,7 @@ public class Credits_Load : MonoBehaviour {
 	Quit_Game_Button.SetActive(true); // setting our quit game button to be on
 	Instructions_Show_Button.SetActive(true); // setting our instructions show button to be on
 	Credits_Button.SetActive(true); // setting our credits button to be on
+	Mute_Button.SetActive(true); // turning our mute button back on
 	Sound_Manager.GetComponent<Sound>().Playsound(Hide_UI,1); // playing the Hide ui sound
 	}
 
