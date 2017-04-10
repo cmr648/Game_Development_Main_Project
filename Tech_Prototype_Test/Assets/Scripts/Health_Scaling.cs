@@ -131,6 +131,8 @@ public class Health_Scaling : MonoBehaviour {
 
 			Destroy (Background_Music); // Destroying our background music gameobject
 			sound_Manager.GetComponent<Sound> ().Playsound (Death_Audio, 1); // playing our death audio sound
+
+
 		//	SceneManager.LoadScene("Game_Over"); // loading our game over screen if the player health = 0
 		}
 
