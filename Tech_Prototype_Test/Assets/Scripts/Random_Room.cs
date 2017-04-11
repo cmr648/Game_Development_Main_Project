@@ -8,15 +8,28 @@ public class Random_Room : MonoBehaviour {
 	int Room_Choice; // creating a float to assign randomly to choose a random room at the start of the game
 
 	// Use this for initialization
-	void Start () {
-	Room_Choice = Random.Range(0,Rooms_List.Length); // setting room choice to a random room in our rooms list
-	Instantiate(Rooms_List[Room_Choice],gameObject.transform.position,Quaternion.identity); // spawning a random room on top of our empty gameobjct
 
-		
+
+	void Start () {
+//	Room_Choice = Random.Range(0,Rooms_List.Length); // setting room choice to a random room in our rooms list
+//	Instantiate(Rooms_List[Room_Choice],gameObject.transform.position,Quaternion.identity); // spawning a random room on top of our empty gameobjct
+//
+//		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
+
+		if (Dungeon_Clear_Checker.Enemy_Amount == 0) { // checking to see if there are no more enmeies left in the dungeon
+		Random_Room_Spawn(); // spawning another random room
+		}
 		
+	}
+
+	void Random_Room_Spawn(){ // creating a function to resimulate the random room spawn
+	Room_Choice = Random.Range(0,Rooms_List.Length); // setting room choice to a random room in our rooms list
+	Instantiate(Rooms_List[Room_Choice],gameObject.transform.position,Quaternion.identity); // spawning a random room on top of our empty gameobjct
+
 	}
 }
