@@ -19,20 +19,20 @@ public class Random_Room_Enable : MonoBehaviour {
 	void Update () {
 	}
 
-	void OnTriggerEnter2D (Collider2D col) 
+	void OnTriggerEnter2D (Collider2D col)  // A function that checks to see if an object is currently in this gamobjects trigger
 	{
 
-		if (col.gameObject.tag == "Player") { // checking to see if the player is in the room 
+		if (col.gameObject.tag == "Player") { // checking to see if the object colliding with the trigger is the player
 		GetComponent<Random_Room>().enabled = false; // making the random room script not enabled
 		} 
 
 	}
 
-	void OnTriggerExit2D (Collider2D col) // checking to see if the player has exited a room 
+	void OnTriggerExit2D (Collider2D col) // A function that checks to see if an object is currently out of this gamobjects trigger
 	{
 
-		if (col.gameObject.tag == "Player") { // if the gameobject is the player
-		GetComponent<Random_Room>().enabled = true; // reenable the random room script
+		if (col.gameObject.tag == "Player") { // checking to see if the object colliding with the trigger is the player
+		GetComponent<Random_Room>().enabled = true; // making the random room script enabled
 		} 
 
 	}
