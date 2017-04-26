@@ -13,6 +13,7 @@ public class Yellow_Idol_Health : MonoBehaviour {
 	public SpriteRenderer Bottom_Teeth_Renderer; // Creatinga  variable for our bottom teeth renderer
 	public ParticleSystem Enemy_Death_Particle; //Creating a public enemy death particle system to instantiate upon death
 	public ParticleSystem Enemy_Damage_Particle; // creating a public enemy damage particle system to instantiate upon damage
+	public ParticleSystem Enemy_Death_Splat; // Creating a public reference to an enemy death splat particle
 
 
 	// Use this for initialization
@@ -44,6 +45,7 @@ public class Yellow_Idol_Health : MonoBehaviour {
 		if (Start_Health <= 0) { // checking to see if the enemy has no life left
 		Destroy(gameObject); // destroy the enemy game object
 		Instantiate(Enemy_Death_Particle,transform.position,Quaternion.identity); // instantiating the enemy death particle system upon enemy death
+		Instantiate(Enemy_Death_Splat,transform.position,Quaternion.identity); // instantiating the enemy death splat particle system upon enemy death
 		Dungeon_Clear_Checker.Enemy_Amount = Dungeon_Clear_Checker.Enemy_Amount -1; // subtracting the enemy from the enemy amount variable
 		Instantiate(Treasure_Drops[Treasure_Choose],transform.position,Quaternion.identity); // dropping the treasure in the place of the enemy when they die
 		}

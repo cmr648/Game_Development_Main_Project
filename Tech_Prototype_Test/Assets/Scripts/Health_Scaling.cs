@@ -28,14 +28,17 @@ public class Health_Scaling : MonoBehaviour {
 
 	public Sprite Character_Death_Sprite; // creating a public sprite reference for our character
 
-
-
+	bool Can_Be_Damaged; // Creating a bollean to see if the player can be damaged or not
+	float Player_Damage_Keeper; // Creating a float to keep the player damage variable
 
 	// Use this for initialization
 	void Start () {
 		Player_Current_Health = Player_Total_Health; // setting the players current health to be equal to the players current health at the start of the game
 		Player_Renderer = GetComponent<SpriteRenderer>(); // assigning the players sprite renderer to player renderer
 		Background_Music = GameObject.FindGameObjectWithTag("Background_Music"); // finding the background music gameobject
+
+		Can_Be_Damaged = true; // making the player able to be damaged at the start of the game
+		Player_Damage_Keeper = Player_Damage; // setting our player damage keeper to be the current player damage
 	}
 	
 	// Update is called once per frame
@@ -157,11 +160,33 @@ public class Health_Scaling : MonoBehaviour {
 		}
 	}
 
-	IEnumerator Color_Change_Damage(){ // creating a color change sequence 
-	sound_Manager.GetComponent<Sound>().Playsound(Player_Damage_Audio,1); // playing the player damage audio sound
-	Player_Renderer.color = Color.red; // changing the color to red
-	yield return new WaitForSeconds (.1f); // waiting one second
-	Player_Renderer.color = Color.white; // changing the color back to normal
+	IEnumerator Color_Change_Damage ()
+	{ // creating a color change sequence 
+//	sound_Manager.GetComponent<Sound>().Playsound(Player_Damage_Audio,1); // playing the player damage audio sound
+//	Player_Renderer.color = Color.red; // changing the color to red
+//	yield return new WaitForSeconds (.1f); // waiting one second
+//	Player_Renderer.color = Color.white; // changing the color back to normal
+
+		if (Can_Be_Damaged == true) { // checking to see if the player is at a state to be damaged
+			Can_Be_Damaged = false; // immidiatly setting them to not be able to be damaged
+			Player_Damage = 0; /// setting our player damage to 0 to allow are player not to be damaged
+			sound_Manager.GetComponent<Sound>().Playsound(Player_Damage_Audio,1); // playing our player damage sound
+			Player_Renderer.color = Color.red; // changing the player to be a red color
+			yield return new WaitForSeconds(.1f); // having it wait 2 seconds
+			Player_Renderer.color = Color.white; // changing the player back to its normal color
+			yield return new WaitForSeconds(.1f); // having it wait 2 seconds
+			Player_Renderer.color = Color.red; // changing the player to be a red color
+			yield return new WaitForSeconds(.1f); // having it wait 2 seconds
+			Player_Renderer.color = Color.white; // changing the player back to its normal color
+			yield return new WaitForSeconds(.1f); // having it wait 2 seconds
+			Player_Renderer.color = Color.red; // changing the player to be a red color
+			yield return new WaitForSeconds(.1f); // having it wait 2 seconds
+			Player_Renderer.color = Color.white; // changing the player back to its normal color
+			yield return new WaitForSeconds(.1f); // having it wait 2 seconds
+			Player_Damage = Player_Damage_Keeper; // resetting our player damage back to norma 
+			Can_Be_Damaged = true; // setting the player to be able to be damaged again
+		}
+
 	}
 
 	IEnumerator Color_Change_Health(){ // creating a color change sequence 

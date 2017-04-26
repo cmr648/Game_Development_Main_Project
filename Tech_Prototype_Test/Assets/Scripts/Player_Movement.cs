@@ -67,6 +67,7 @@ public class Player_Movement : MonoBehaviour {
 		if (Input.GetKey (KeyCode.RightArrow)) { // checking to see if the right arrow key has been pressed
 			PlayerInput += new Vector2 (1, 0); // setting the player input vector 2 to the right direction
 		} 
+		PlayerInput.Normalize(); // normalizing our player input variable to make the speed same for every single angle the player is moving
 	}
 
 	void PlayerAngleMovement(){

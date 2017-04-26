@@ -16,6 +16,8 @@ public class Box_Green_Health : MonoBehaviour {
 	public SpriteRenderer Eyebrows; // creating a variable to get the renderer of the eyebrows
 	public ParticleSystem Enemy_Death_Particle; //Creating a public enemy death particle system to instantiate upon death
 	public ParticleSystem Enemy_Damage_Particle; // creating a public enemy damage particle system to instantiate upon damage
+	public ParticleSystem Enemy_Death_Splat; // Creatinga  public partcile system to instantiate a splat upon death
+
 
 	// Use this for initialization
 	void Start () {
@@ -52,20 +54,28 @@ public class Box_Green_Health : MonoBehaviour {
 		if (Start_Health <= 0) { // checking to see if the enemy has no life left
 		Destroy(gameObject); // destroy the enemy game object
 		Instantiate(Enemy_Death_Particle,transform.position,Quaternion.identity); // instantiating the enemy death particle system upon enemy death
+		Instantiate(Enemy_Death_Splat,transform.position,Quaternion.identity); // instantiating the enemy death particle system upon enemy death
+
 		Dungeon_Clear_Checker.Enemy_Amount = Dungeon_Clear_Checker.Enemy_Amount -1; // subtracting the enemy from the enemy amount variable
 		Instantiate(Treasure_Drops[Treasure_Choose],transform.position,Quaternion.identity); // dropping the treasure in the place of the enemy when they die
 		}
 
 	}
 
-	void OnCollisionEnter2D (Collision2D col)	{ // a void that checks to see if the enemy collided with soething
+	void OnCollisionEnter2D (Collision2D col)
+	{ // a void that checks to see if the enemy collided with soething
 		if (col.gameObject.tag == "Player_Bullet") { // checking to see if the collision was with a player bullet
 			Start_Health -= 1; // make the enemy lose health
 			Bullet_Movement.Move_Speed = -Bullet_Movement.Move_Speed; // reversing the boomerang speed
-			Instantiate(Enemy_Damage_Particle,transform.position,Quaternion.identity); // instantiating the enemy damage particle system upon damage
+			Instantiate (Enemy_Damage_Particle, transform.position, Quaternion.identity); // instantiating the enemy damage particle system upon damage
 			//	Destroy(col.gameObject); // destroy the boomerang
 		}
 
+		if (col.gameObject.tag == "Final_Boundry") { // checking to see if the gameobject is colliding with the final boundry
+			Destroy(gameObject); // having the object destroy itself
+			Dungeon_Clear_Checker.Enemy_Amount = Dungeon_Clear_Checker.Enemy_Amount -1;
+
+		}
 
 	}
 }

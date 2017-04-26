@@ -49,6 +49,8 @@ public class Player_Score : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Enter_Name.text = Enter_Name.text.ToUpper(); // setting the input field text to be upper case at all times
+
 		Player_Entry();
 
 		Name_1.text = PlayerPrefs.GetString("Highscore_String"); // setting our name1 text to our highest scoring name

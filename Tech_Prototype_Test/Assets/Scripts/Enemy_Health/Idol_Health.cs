@@ -14,11 +14,15 @@ public class Idol_Health : MonoBehaviour {
 	public SpriteRenderer Bottom_Teeth_Renderer; // Creatinga  variable for our bottom teeth renderer
 	public ParticleSystem Enemy_Death_Particle; //Creating a public enemy death particle system to instantiate upon death
 	public ParticleSystem Enemy_Damage_Particle; // creating a public enemy damage particle system to instantiate upon damage
+	public ParticleSystem Enemy_Death_Splat; // Creating a public enemy death splat partciel system to reference
 
+	GameObject Player; // creating a gameobject reference for the player
 
 
 	// Use this for initialization
 	void Start () {
+
+	Player = GameObject.FindGameObjectWithTag("Player"); // setting our player gameobject
 
 	Half_Health = Start_Health/2; // setting half health to be half the player health
 
@@ -34,6 +38,7 @@ public class Idol_Health : MonoBehaviour {
 	void FixedUpdate () // an update function that is called every frame
 	{
 
+
 		Treasure_Choose = Random.Range(0,Treasure_Drops.Length); // setting our treasure choose variable to be a different treasure every time an enemy dies
 
 		if (Start_Health <= Half_Health) { // checking to see if the enemy health is less than or equal to 2
@@ -45,6 +50,7 @@ public class Idol_Health : MonoBehaviour {
 		if (Start_Health <= 0) { // checking to see if the enemy has no life left
 		Destroy(gameObject); // destroy the enemy game object
 		Instantiate(Enemy_Death_Particle,transform.position,Quaternion.identity); // instantiating the enemy death particle system upon enemy death
+		Instantiate(Enemy_Death_Splat,transform.position,Quaternion.identity); // instantiating the enemy death particle system upon enemy death
 		Dungeon_Clear_Checker.Enemy_Amount = Dungeon_Clear_Checker.Enemy_Amount -1; // subtracting the enemy from the enemy amount variable
 		Instantiate(Treasure_Drops[Treasure_Choose],transform.position,Quaternion.identity); // dropping the treasure in the place of the enemy when they die
 		}

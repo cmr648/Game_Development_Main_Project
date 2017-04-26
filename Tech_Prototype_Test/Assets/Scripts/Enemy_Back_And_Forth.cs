@@ -10,7 +10,7 @@ public class Enemy_Back_And_Forth : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Velocity =  new Vector3(MoveSpeedX,MoveSpeedY,0); // assinging our movespeeds to our vector
+		Velocity =  new Vector3(Random.Range(-MoveSpeedX,MoveSpeedX),Random.Range(-MoveSpeedY,MoveSpeedY),0); // assinging our movespeeds to our vector
 	}
 	
 	// Update is called once per frame
