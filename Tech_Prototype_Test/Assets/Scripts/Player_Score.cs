@@ -61,7 +61,7 @@ public class Player_Score : MonoBehaviour {
  	void Player_Entry ()
 	{ // setting up our player entry script
 
-		if (Input.GetKeyDown (KeyCode.Return)) { // checking to see if the return key is pressed
+		//if (Input.GetKeyDown (KeyCode.Return)) { // checking to see if the return key is pressed
 
 			if (Treasure_Pickup.Player_Score == PlayerPrefs.GetFloat ("Highscore")) { // checking to see that the player has the current high score
 				PlayerPrefs.SetString("Highscore_String",Enter_Name.text); // setting our high score string to be the text of our text field
@@ -76,6 +76,20 @@ public class Player_Score : MonoBehaviour {
 			}
 
 
+
+
+		//}
+
+		if(string.IsNullOrEmpty(PlayerPrefs.GetString("Highscore_String")) && string.IsNullOrEmpty(Enter_Name.text)){
+			PlayerPrefs.SetString("Highscore_String","???");
+		}
+
+		if(string.IsNullOrEmpty(PlayerPrefs.GetString("Highscore_String_2")) && string.IsNullOrEmpty(Enter_Name.text)){
+			PlayerPrefs.SetString("Highscore_String_2","???");
+		}
+
+		if(string.IsNullOrEmpty(PlayerPrefs.GetString("Highscore_String_3")) && string.IsNullOrEmpty(Enter_Name.text)){
+			PlayerPrefs.SetString("Highscore_String_3","???");
 		}
 
 
