@@ -60,7 +60,8 @@ public class Player_Shooting : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-			//Pick_Bullet_Spawn_Position(); // setting up pick bullet spawn position
+		//Pick_Bullet_Spawn_Position(); // setting up pick bullet spawn position
+
 
 			if (Input.GetKeyDown (KeyCode.W) || Input.GetKeyDown (KeyCode.S) || Input.GetKeyDown (KeyCode.D) || Input.GetKeyDown (KeyCode.A)) { // an if statement that checks to see if the WSAD keys have been pressed
 				InvokeRepeating ("Fire_Bullet", 0, Bullet_Time); // repeating our fire bullet function to make the player fire on a delay
@@ -132,6 +133,7 @@ public class Player_Shooting : MonoBehaviour {
 			Bullet_Movement.Move_Speed = bulletSlow; // changing the speed of the bullet to be half speed
 			bullet_renderer.sprite = Large_Boomerang; // changing the bullet sprite to a large boomerang
 			sound_Manager.GetComponent<Sound>().Playsound(Boomerang_Switch,1); // playing our boomerang switch sound
+			Boomerang_UI_Amount.Boomerang_Type_For_UI = 1;
 		}
 
 		if (col.gameObject.tag == "BulletSizeDown") { // if the player has collided with an arrow pickup 
@@ -140,6 +142,7 @@ public class Player_Shooting : MonoBehaviour {
 			Bullet_Movement.Move_Speed = bulletFast; // changing the speed of the bullet to be *2
 			bullet_renderer.sprite = Small_Boomerang; // changing the bullet sprite to a small boomerang
 			sound_Manager.GetComponent<Sound>().Playsound(Boomerang_Switch,1); // playing our boomerang switch sound
+			Boomerang_UI_Amount.Boomerang_Type_For_UI = 2;
 		}
 
 		if (col.gameObject.tag == "BulletSizeNormal") { // if the player has collided with the normal size arrow pickup
@@ -148,6 +151,7 @@ public class Player_Shooting : MonoBehaviour {
 			Bullet_Movement.Move_Speed = Bullet_Normal_Speed; // changing the bullet speed to be back to normal
 			bullet_renderer.sprite = Normal_Boomerang; // changing the bullet renderers sprite to be back to a normal boomerang
 			sound_Manager.GetComponent<Sound>().Playsound(Boomerang_Switch,1); // playing our boomerang switch sound
+			Boomerang_UI_Amount.Boomerang_Type_For_UI = 0;
 		}
 
 

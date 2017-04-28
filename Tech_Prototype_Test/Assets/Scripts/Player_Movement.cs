@@ -55,6 +55,7 @@ public class Player_Movement : MonoBehaviour {
 	void ArrowKeyMovement ()
 	{ //creating a void to register commands to the arrow keys
 		PlayerInput = Vector2.zero;
+
 		if (Input.GetKey (KeyCode.UpArrow)) { // checking to see if the up arrow key has been pressed
 			PlayerInput += new Vector2 (0, 1); // setting the player input vector 2 to the up direction
 		} 

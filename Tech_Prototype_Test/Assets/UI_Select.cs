@@ -35,6 +35,7 @@ public class UI_Select : MonoBehaviour {
 	public GameObject Credits_Button;
 	public GameObject Quit_Button;
 	public GameObject Mute_Button;
+	public GameObject Title_Text;
 
 	public string Next_level;
 
@@ -76,6 +77,7 @@ public class UI_Select : MonoBehaviour {
 		Credits_Button.SetActive(true);
 		Quit_Button.SetActive(true);
 		Mute_Button.SetActive(true);
+		Title_Text.SetActive(true);
 		
 	}
 	
@@ -192,6 +194,7 @@ public class UI_Select : MonoBehaviour {
 			Credits_Button.SetActive(false);
 			Quit_Button.SetActive(false);
 			Mute_Button.SetActive(false);
+			Title_Text.SetActive(false);
 
 		}
 
@@ -208,6 +211,7 @@ public class UI_Select : MonoBehaviour {
 			Credits_Button.SetActive(false);
 			Quit_Button.SetActive(false);
 			Mute_Button.SetActive(false);
+			Title_Text.SetActive(false);
 
 		}
 
@@ -230,6 +234,7 @@ public class UI_Select : MonoBehaviour {
 			Credits_Button.SetActive(true);
 			Quit_Button.SetActive(true);
 			Mute_Button.SetActive(true);
+			Title_Text.SetActive(true);
 
 		}
 
