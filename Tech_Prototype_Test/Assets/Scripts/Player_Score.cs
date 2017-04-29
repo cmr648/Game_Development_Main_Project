@@ -90,6 +90,7 @@ public class Player_Score : MonoBehaviour {
 
 		if(string.IsNullOrEmpty(PlayerPrefs.GetString("Highscore_String_3")) && string.IsNullOrEmpty(Enter_Name.text)){
 			PlayerPrefs.SetString("Highscore_String_3","???");
+
 		}
 
 
