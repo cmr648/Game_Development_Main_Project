@@ -15,10 +15,21 @@ public class Player_Movement : MonoBehaviour {
 
 	public static float Player_Bullet_Spawn_Position; // creating a public statci float reference to our player spawn position
 
-	public Sprite Down_Sprite; // creating a public sprite reference to our down sprite
-	public Sprite Up_Sprite; // creating a public sprite reference to our up sprite
-	public Sprite Left_Sprite; // creating a public sprite reference to our left sprite
-	public Sprite Right_Sprite; // creating a public sprite reference to our right sprite
+	 Sprite Down_Sprite; // creating a public sprite reference to our down sprite
+	 Sprite Up_Sprite; // creating a public sprite reference to our up sprite
+	 Sprite Left_Sprite; // creating a public sprite reference to our left sprite
+	 Sprite Right_Sprite; // creating a public sprite reference to our right sprite
+
+	 public Sprite Player_1_Down;
+	 public Sprite Player_1_Up;
+	 public Sprite Player_1_Left;
+	 public Sprite Player_1_Right;
+
+	 public Sprite Player_2_Down;
+	 public Sprite Player_2_Up;
+	 public Sprite Player_2_Left;
+	 public Sprite Player_2_Right;
+
 
 	SpriteRenderer Player_Renderer; // creating a reference to our player sprite renderer
 
@@ -28,12 +39,15 @@ public class Player_Movement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Character_Set();
 		rb = GetComponent<Rigidbody2D>(); // setting our rb variable to the current rigidbody of the player
 		isPaused = false; // setting our is paused boolean to be false
 		Pause_Panel.SetActive(false); // turning our pause menu off at the start of the game
 
 		Player_Renderer = GetComponent<SpriteRenderer>(); // assigning the players sprite renderer to our player renderer reference
 		Player_Collider = GetComponent<CircleCollider2D>(); // assigning the players circle collider 2d to the player collider reference
+
+		Player_Renderer.sprite = Down_Sprite;
 
 		Background_Music_For_Pause = GameObject.FindGameObjectWithTag("Background_Music").GetComponent<AudioSource>(); // assining our background music for pause gameobject to the current background music
 
@@ -129,6 +143,29 @@ public class Player_Movement : MonoBehaviour {
 			}
 
 		}
+
+	}
+
+	void Character_Set ()
+	{
+
+		if (PlayerPrefs.GetFloat ("Character_Selection") == 0) {
+			Down_Sprite = Player_1_Down;
+			Up_Sprite = Player_1_Up;
+			Left_Sprite = Player_1_Left;
+			Right_Sprite = Player_1_Right;
+
+		}
+
+
+		if (PlayerPrefs.GetFloat ("Character_Selection") == 1) {
+			Down_Sprite = Player_2_Down;
+			Up_Sprite = Player_2_Up;
+			Left_Sprite = Player_2_Left;
+			Right_Sprite = Player_2_Right;
+
+		}
+
 
 	}
 

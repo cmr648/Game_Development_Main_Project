@@ -26,13 +26,16 @@ public class Health_Scaling : MonoBehaviour {
 
 	GameObject Background_Music; // Creating a gameobject reference to background music
 
-	public Sprite Character_Death_Sprite; // creating a public sprite reference for our character
+	Sprite Character_Death_Sprite; // creating a public sprite reference for our character
+	public Sprite Character_Death_Player_1;
+	public Sprite Character_Death_Player_2;
 
 	bool Can_Be_Damaged; // Creating a bollean to see if the player can be damaged or not
 	float Player_Damage_Keeper; // Creating a float to keep the player damage variable
 
 	// Use this for initialization
 	void Start () {
+		Choose_Character_Death();
 		Player_Current_Health = Player_Total_Health; // setting the players current health to be equal to the players current health at the start of the game
 		Player_Renderer = GetComponent<SpriteRenderer>(); // assigning the players sprite renderer to player renderer
 		Background_Music = GameObject.FindGameObjectWithTag("Background_Music"); // finding the background music gameobject
@@ -195,6 +198,18 @@ public class Health_Scaling : MonoBehaviour {
 	Player_Renderer.color = Color.white; // changing the color back to normal
 	}
 
+	void Choose_Character_Death ()
+	{
+		if (PlayerPrefs.GetFloat ("Character_Selection") == 0) {
+			Character_Death_Sprite = Character_Death_Player_1;
 
+		}
+
+		if (PlayerPrefs.GetFloat ("Character_Selection") == 1) {
+			Character_Death_Sprite = Character_Death_Player_2;
+
+		}
+
+	}
 
 }

@@ -22,7 +22,7 @@ public class Mute_Game : MonoBehaviour {
 	{
 		AudioListener.volume = PlayerPrefs.GetFloat ("Mute_Volume");
 
-		if (Input.GetKeyDown (KeyCode.M)) {
+		if (Input.GetKeyDown (KeyCode.LeftControl)) {
 			Mute();
 
 		}

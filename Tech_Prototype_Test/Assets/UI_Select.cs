@@ -18,9 +18,11 @@ public class UI_Select : MonoBehaviour {
 	public GameObject Selector_2;
 	public GameObject Selector_3;
 	public GameObject Selector_4;
+	public GameObject Selector_5;
 
 	public GameObject Instructions_Panel;
 	public GameObject Credits_Panel;
+	public GameObject Character_Panel;
 
 	// a number to select things
 	public float Selection_Number;
@@ -36,6 +38,7 @@ public class UI_Select : MonoBehaviour {
 	public GameObject Quit_Button;
 	public GameObject Mute_Button;
 	public GameObject Title_Text;
+	public GameObject Character_Select_Text;
 
 	public string Next_level;
 
@@ -65,6 +68,7 @@ public class UI_Select : MonoBehaviour {
 
 		Instructions_Panel.SetActive(false);
 		Credits_Panel.SetActive(false);
+		Character_Panel.SetActive(false);
 
 		Can_Use_Arrow_Keys = true;
 		Can_Show_Selection = true;
@@ -78,6 +82,7 @@ public class UI_Select : MonoBehaviour {
 		Quit_Button.SetActive(true);
 		Mute_Button.SetActive(true);
 		Title_Text.SetActive(true);
+		Character_Select_Text.SetActive(true);
 		
 	}
 	
@@ -90,7 +95,7 @@ public class UI_Select : MonoBehaviour {
 
 		Return_Key_Commands ();
 
-		if (Input.GetKeyDown (KeyCode.M)) {
+		if (Input.GetKeyDown (KeyCode.LeftControl)) {
 			Mute();
 
 		}
@@ -131,11 +136,11 @@ public class UI_Select : MonoBehaviour {
 
 		}
 
-		if (Selection_Number > 3) {
+		if (Selection_Number > 4) {
 			Selection_Number = 0;
 		}
 		if (Selection_Number <0){
-			Selection_Number = 3;
+			Selection_Number = 4;
 		}
 	}
 
@@ -146,6 +151,7 @@ public class UI_Select : MonoBehaviour {
 			Selector_2.SetActive(false);
 			Selector_3.SetActive(false);
 			Selector_4.SetActive(false);
+			Selector_5.SetActive(false);
 		}
 
 		if (Selection_Number == 1) {
@@ -153,6 +159,7 @@ public class UI_Select : MonoBehaviour {
 			Selector_2.SetActive(true);
 			Selector_3.SetActive(false);
 			Selector_4.SetActive(false);
+			Selector_5.SetActive(false);
 		}
 
 		if (Selection_Number == 2) {
@@ -160,6 +167,7 @@ public class UI_Select : MonoBehaviour {
 			Selector_2.SetActive(false);
 			Selector_3.SetActive(true);
 			Selector_4.SetActive(false);
+			Selector_5.SetActive(false);
 		}
 
 		if (Selection_Number == 3) {
@@ -167,6 +175,15 @@ public class UI_Select : MonoBehaviour {
 			Selector_2.SetActive(false);
 			Selector_3.SetActive(false);
 			Selector_4.SetActive(true);
+			Selector_5.SetActive(false);
+		}
+
+		if (Selection_Number == 4) {
+			Selector_1.SetActive(false);
+			Selector_2.SetActive(false);
+			Selector_3.SetActive(false);
+			Selector_4.SetActive(false);
+			Selector_5.SetActive(true);
 		}
 
 
@@ -181,8 +198,25 @@ public class UI_Select : MonoBehaviour {
 
 		}
 
-
 		if (Input.GetKeyDown (KeyCode.Return) && Selection_Number == 1) {
+			Sound_Manager.GetComponent<Sound>().Playsound(Show_UI,1);
+
+			Character_Panel.SetActive(true);
+			Can_Use_Arrow_Keys = false;
+			Can_Show_Selection = false;
+
+			Play_Button.SetActive(false);
+			Instructions_Button.SetActive(false);
+			Credits_Button.SetActive(false);
+			Quit_Button.SetActive(false);
+			Mute_Button.SetActive(false);
+			Title_Text.SetActive(false);
+			Character_Select_Text.SetActive(false);
+
+		}
+
+
+		if (Input.GetKeyDown (KeyCode.Return) && Selection_Number == 2) {
 			Sound_Manager.GetComponent<Sound>().Playsound(Show_UI,1);
 
 			Instructions_Panel.SetActive(true);
@@ -195,11 +229,12 @@ public class UI_Select : MonoBehaviour {
 			Quit_Button.SetActive(false);
 			Mute_Button.SetActive(false);
 			Title_Text.SetActive(false);
+			Character_Select_Text.SetActive(false);
 
 		}
 
 
-		if (Input.GetKeyDown (KeyCode.Return) && Selection_Number == 2) {
+		if (Input.GetKeyDown (KeyCode.Return) && Selection_Number == 3) {
 			Sound_Manager.GetComponent<Sound>().Playsound(Show_UI,1);
 
 			Credits_Panel.SetActive(true);
@@ -212,6 +247,7 @@ public class UI_Select : MonoBehaviour {
 			Quit_Button.SetActive(false);
 			Mute_Button.SetActive(false);
 			Title_Text.SetActive(false);
+			Character_Select_Text.SetActive(false);
 
 		}
 
@@ -220,7 +256,7 @@ public class UI_Select : MonoBehaviour {
 			Application.Quit();
 		}
 
-		if(Input.GetKeyDown(KeyCode.Escape) && Instructions_Panel.activeInHierarchy || Input.GetKeyDown(KeyCode.Escape) && Credits_Panel.activeInHierarchy){
+		if(Input.GetKeyDown(KeyCode.Escape) && Instructions_Panel.activeInHierarchy || Input.GetKeyDown(KeyCode.Escape) && Credits_Panel.activeInHierarchy || Input.GetKeyDown(KeyCode.Escape) && Character_Panel.activeInHierarchy){
 			Sound_Manager.GetComponent<Sound>().Playsound(Hide_UI,1);
 
 
@@ -228,6 +264,7 @@ public class UI_Select : MonoBehaviour {
 			Can_Show_Selection = true;
 			Instructions_Panel.SetActive(false);
 			Credits_Panel.SetActive(false);
+			Character_Panel.SetActive(false);
 
 			Play_Button.SetActive(true);
 			Instructions_Button.SetActive(true);
@@ -235,6 +272,7 @@ public class UI_Select : MonoBehaviour {
 			Quit_Button.SetActive(true);
 			Mute_Button.SetActive(true);
 			Title_Text.SetActive(true);
+			Character_Select_Text.SetActive(true);
 
 		}
 
