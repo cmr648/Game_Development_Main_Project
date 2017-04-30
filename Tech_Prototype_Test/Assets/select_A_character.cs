@@ -15,8 +15,17 @@ public class select_A_character : MonoBehaviour {
 	public AudioClip[] Selection_Audio;
 	GameObject Sound_Manager;
 
+	public GameObject Character_Text;
+	public Color[] Text_Colors;
+	int Index;
+	public string Player_1_Text;
+	public string Player_2_Text;
+
 	// Use this for initialization
 	void Start () {
+		Index = Random.Range(0,Text_Colors.Length);
+		Character_Text.GetComponent<Text>().color = new Color(Text_Colors[Index].r,Text_Colors[Index].g,Text_Colors[Index].b);
+
 		Selection = PlayerPrefs.GetFloat("Character_Selection");
 		Sound_Manager = GameObject.FindGameObjectWithTag("Sound_Manager");
 	}
@@ -27,6 +36,8 @@ public class select_A_character : MonoBehaviour {
 		SpriteChange();
 		Arrow_Scaling();
 		Debug.Log(Selection);
+
+
 	}
 
 	void KeyCommands ()
@@ -54,14 +65,19 @@ public class select_A_character : MonoBehaviour {
 
 	void SpriteChange ()
 	{
+		
+
 		if (Selection == 0) {
 			gameObject.GetComponent<Image>().sprite = Player_1;
 			PlayerPrefs.SetFloat("Character_Selection",0);
+			Character_Text.GetComponent<Text>().text = Player_1_Text;
+
 		}
 
 		if (Selection == 1) {
 			gameObject.GetComponent<Image>().sprite = Player_2;
 			PlayerPrefs.SetFloat("Character_Selection",1);
+			Character_Text.GetComponent<Text>().text = Player_2_Text;
 
 		}
 
@@ -70,12 +86,18 @@ public class select_A_character : MonoBehaviour {
 	void Arrow_Scaling ()
 	{
 		if (Input.GetKeyDown (KeyCode.RightArrow)) {
+			Index = Random.Range(0,Text_Colors.Length);
+			Character_Text.GetComponent<Text>().color = new Color(Text_Colors[Index].r,Text_Colors[Index].g,Text_Colors[Index].b);
+
 			Right_Selection_Arrow.transform.localScale = Right_Selection_Arrow.transform.localScale * Arrow_Up_Scale;
 			Sound_Manager.GetComponent<Sound>().Playsound(Selection_Audio[Random.Range(0,Selection_Audio.Length)],1);
 
 		}
 
 		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+			Index = Random.Range(0,Text_Colors.Length);
+			Character_Text.GetComponent<Text>().color = new Color(Text_Colors[Index].r,Text_Colors[Index].g,Text_Colors[Index].b);
+			
 			Left_Selection_Arrow.transform.localScale = Left_Selection_Arrow.transform.localScale * Arrow_Up_Scale;
 			Sound_Manager.GetComponent<Sound>().Playsound(Selection_Audio[Random.Range(0,Selection_Audio.Length)],1);
 
