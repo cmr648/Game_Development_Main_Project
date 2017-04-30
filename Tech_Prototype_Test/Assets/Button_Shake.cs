@@ -19,7 +19,7 @@ public class Button_Shake : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.Space)) {
 
-			Screenshake_Script.Set_Screen_Shake (.6f, 2);
+			Screenshake_Script.Set_Screen_Shake (1f, 2);
 		}
 	}
 }

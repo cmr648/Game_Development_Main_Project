@@ -18,6 +18,8 @@ public class Idol_Health : MonoBehaviour {
 
 	GameObject Player; // creating a gameobject reference for the player
 
+	public float Camera_Shake_Magnitude;
+	public float Camera_Shake_Duration;
 
 	// Use this for initialization
 	void Start () {
@@ -48,6 +50,9 @@ public class Idol_Health : MonoBehaviour {
 		}
 
 		if (Start_Health <= 0) { // checking to see if the enemy has no life left
+		Camera.main.GetComponent<Screen_Shake>().Set_Screen_Shake(Camera_Shake_Magnitude,Camera_Shake_Duration);
+
+
 		Destroy(gameObject); // destroy the enemy game object
 		Instantiate(Enemy_Death_Particle,transform.position,Quaternion.identity); // instantiating the enemy death particle system upon enemy death
 		Instantiate(Enemy_Death_Splat,transform.position,Quaternion.identity); // instantiating the enemy death particle system upon enemy death
@@ -63,6 +68,8 @@ public class Idol_Health : MonoBehaviour {
 			Bullet_Movement.Move_Speed = -Bullet_Movement.Move_Speed; // reversing the boomerang speeds
 			Instantiate(Enemy_Damage_Particle,transform.position,Quaternion.identity); // instantiating the enemy damage particle system upon damage
 			//	Destroy(col.gameObject); // destroy the boomerang
+			Camera.main.GetComponent<Screen_Shake>().Set_Screen_Shake(Camera_Shake_Magnitude/2,Camera_Shake_Duration/2);
+
 		}
 
 

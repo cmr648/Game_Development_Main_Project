@@ -252,7 +252,7 @@ public class UI_Select : MonoBehaviour {
 		}
 
 
-		if (Input.GetKeyDown (KeyCode.Return) && Selection_Number == 3) {
+		if (Input.GetKeyDown (KeyCode.Return) && Selection_Number == 4) {
 			Application.Quit();
 		}
 

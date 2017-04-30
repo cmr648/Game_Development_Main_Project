@@ -18,6 +18,8 @@ public class Box_Green_Health : MonoBehaviour {
 	public ParticleSystem Enemy_Damage_Particle; // creating a public enemy damage particle system to instantiate upon damage
 	public ParticleSystem Enemy_Death_Splat; // Creatinga  public partcile system to instantiate a splat upon death
 
+	public float Camera_Shake_Magnitude;
+	public float Camera_Shake_Duration;
 
 	// Use this for initialization
 	void Start () {
@@ -52,12 +54,17 @@ public class Box_Green_Health : MonoBehaviour {
 		}
 
 		if (Start_Health <= 0) { // checking to see if the enemy has no life left
+		Camera.main.GetComponent<Screen_Shake>().Set_Screen_Shake(Camera_Shake_Magnitude,Camera_Shake_Duration);
+
+
 		Destroy(gameObject); // destroy the enemy game object
 		Instantiate(Enemy_Death_Particle,transform.position,Quaternion.identity); // instantiating the enemy death particle system upon enemy death
 		Instantiate(Enemy_Death_Splat,transform.position,Quaternion.identity); // instantiating the enemy death particle system upon enemy death
 
 		Dungeon_Clear_Checker.Enemy_Amount = Dungeon_Clear_Checker.Enemy_Amount -1; // subtracting the enemy from the enemy amount variable
 		Instantiate(Treasure_Drops[Treasure_Choose],transform.position,Quaternion.identity); // dropping the treasure in the place of the enemy when they die
+
+
 		}
 
 	}
@@ -69,7 +76,10 @@ public class Box_Green_Health : MonoBehaviour {
 			Bullet_Movement.Move_Speed = -Bullet_Movement.Move_Speed; // reversing the boomerang speed
 			Instantiate (Enemy_Damage_Particle, transform.position, Quaternion.identity); // instantiating the enemy damage particle system upon damage
 			//	Destroy(col.gameObject); // destroy the boomerang
+			Camera.main.GetComponent<Screen_Shake>().Set_Screen_Shake(Camera_Shake_Magnitude/2,Camera_Shake_Duration/2);
+
 		}
+
 
 		if (col.gameObject.tag == "Final_Boundry") { // checking to see if the gameobject is colliding with the final boundry
 			Destroy(gameObject); // having the object destroy itself

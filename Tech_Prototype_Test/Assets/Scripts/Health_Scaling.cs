@@ -36,8 +36,18 @@ public class Health_Scaling : MonoBehaviour {
 	bool Can_Be_Damaged; // Creating a bollean to see if the player can be damaged or not
 	float Player_Damage_Keeper; // Creating a float to keep the player damage variable
 
+	public float Camera_Shake_Magnitude;
+	public float Camera_Shake_Duration;
+
+	public GameObject Red_Flash;
+	public GameObject Green_Flash;
+	public float Red_Flash_Wait_Seconds;
+
 	// Use this for initialization
 	void Start () {
+		Red_Flash.SetActive(false);
+		Green_Flash.SetActive(false);
+
 		Choose_Character_Death();
 		Player_Current_Health = Player_Total_Health; // setting the players current health to be equal to the players current health at the start of the game
 		Player_Renderer = GetComponent<SpriteRenderer>(); // assigning the players sprite renderer to player renderer
@@ -71,17 +81,24 @@ public class Health_Scaling : MonoBehaviour {
 		if (col.gameObject.tag == "Enemy") { // checking to see if the player is colliding with an enemy game object
 			Player_Current_Health -= Player_Damage; // subtracting the player damage from the health bar
 			StartCoroutine("Color_Change_Damage"); // begining our color change damage IENuemerator
+			Camera.main.GetComponent<Screen_Shake>().Set_Screen_Shake(Camera_Shake_Magnitude,Camera_Shake_Duration);
+			StartCoroutine("Flash_Red");
+
 		}
 
 		if (col.gameObject.tag == "Skeleton") { // checking to see if the player is colliding with a skeleton game object
 			Player_Current_Health -= Player_Damage; // subtracting the player damage from the health bar
 			StartCoroutine("Color_Change_Damage"); // begining our color change damage IENuemerator
+			Camera.main.GetComponent<Screen_Shake>().Set_Screen_Shake(Camera_Shake_Magnitude,Camera_Shake_Duration);
+			StartCoroutine("Flash_Red");
 		}
 
 		if (col.gameObject.tag == "Enemy_Bullet") { // checking to see if the player is colliding with an enemy bullet game object
 			Player_Current_Health -= Player_Damage; // subtracting the player damage from the health bar
 			StartCoroutine("Color_Change_Damage"); // begining our color change damage IENuemerator
 			Destroy(col.gameObject); // destroy the bullet
+			Camera.main.GetComponent<Screen_Shake>().Set_Screen_Shake(Camera_Shake_Magnitude,Camera_Shake_Duration);
+			StartCoroutine("Flash_Red");
 		};
 
 		if (col.gameObject.tag == "Health_Boost") { // checking to see if the player is colliding with a health boost game object
@@ -89,6 +106,7 @@ public class Health_Scaling : MonoBehaviour {
 			StartCoroutine("Color_Change_Health"); // begining our color change health IEnumerator
 			Destroy(col.gameObject); // get rid of the health pack upon using it one time
 			sound_Manager.GetComponent<Sound>().Playsound(Health_Up,1); // playing our health up sound
+			StartCoroutine("Flash_Green");
 		}
 
 	}
@@ -227,6 +245,22 @@ public class Health_Scaling : MonoBehaviour {
 			Character_Death_Sprite = Character_Death_Player_5;
 
 		}
+	}
+
+	IEnumerator Flash_Red ()
+	{
+		Red_Flash.SetActive(true);
+		yield return new WaitForSeconds(Red_Flash_Wait_Seconds);
+		Red_Flash.SetActive(false);
+
+	}
+
+	IEnumerator Flash_Green ()
+	{
+		Green_Flash.SetActive(true);
+		yield return new WaitForSeconds(Red_Flash_Wait_Seconds);
+		Green_Flash.SetActive(false);
+
 	}
 
 }
