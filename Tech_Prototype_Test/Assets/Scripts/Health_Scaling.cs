@@ -29,6 +29,9 @@ public class Health_Scaling : MonoBehaviour {
 	Sprite Character_Death_Sprite; // creating a public sprite reference for our character
 	public Sprite Character_Death_Player_1;
 	public Sprite Character_Death_Player_2;
+	public Sprite Character_Death_Player_3;
+	public Sprite Character_Death_Player_4;
+	public Sprite Character_Death_Player_5;
 
 	bool Can_Be_Damaged; // Creating a bollean to see if the player can be damaged or not
 	float Player_Damage_Keeper; // Creating a float to keep the player damage variable
@@ -210,6 +213,20 @@ public class Health_Scaling : MonoBehaviour {
 
 		}
 
+		if (PlayerPrefs.GetFloat ("Character_Selection") == 2) {
+			Character_Death_Sprite = Character_Death_Player_3;
+
+		}
+
+		if (PlayerPrefs.GetFloat ("Character_Selection") == 3) {
+			Character_Death_Sprite = Character_Death_Player_4;
+
+		}
+
+		if (PlayerPrefs.GetFloat ("Character_Selection") == 4) {
+			Character_Death_Sprite = Character_Death_Player_5;
+
+		}
 	}
 
 }

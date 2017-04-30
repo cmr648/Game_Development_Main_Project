@@ -30,6 +30,21 @@ public class Player_Movement : MonoBehaviour {
 	 public Sprite Player_2_Left;
 	 public Sprite Player_2_Right;
 
+	 public Sprite Player_3_Down;
+	 public Sprite Player_3_Up;
+	 public Sprite Player_3_Left;
+	 public Sprite Player_3_Right;
+
+	 public Sprite Player_4_Down;
+	 public Sprite Player_4_Up;
+	 public Sprite Player_4_Left;
+	 public Sprite Player_4_Right;
+
+	 public Sprite Player_5_Down;
+	 public Sprite Player_5_Up;
+	 public Sprite Player_5_Left;
+	 public Sprite Player_5_Right;
+
 
 	SpriteRenderer Player_Renderer; // creating a reference to our player sprite renderer
 
@@ -163,6 +178,30 @@ public class Player_Movement : MonoBehaviour {
 			Up_Sprite = Player_2_Up;
 			Left_Sprite = Player_2_Left;
 			Right_Sprite = Player_2_Right;
+
+		}
+
+		if (PlayerPrefs.GetFloat ("Character_Selection") == 2) {
+			Down_Sprite = Player_3_Down;
+			Up_Sprite = Player_3_Up;
+			Left_Sprite = Player_3_Left;
+			Right_Sprite = Player_3_Right;
+
+		}
+
+		if (PlayerPrefs.GetFloat ("Character_Selection") == 3) {
+			Down_Sprite = Player_4_Down;
+			Up_Sprite = Player_4_Up;
+			Left_Sprite = Player_4_Left;
+			Right_Sprite = Player_4_Right;
+
+		}
+
+		if (PlayerPrefs.GetFloat ("Character_Selection") == 4) {
+			Down_Sprite = Player_5_Down;
+			Up_Sprite = Player_5_Up;
+			Left_Sprite = Player_5_Left;
+			Right_Sprite = Player_5_Right;
 
 		}
 

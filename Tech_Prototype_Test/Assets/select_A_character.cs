@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class select_A_character : MonoBehaviour {
 	public Sprite Player_1;
 	public Sprite Player_2;
+	public Sprite Player_3;
+	public Sprite Player_4;
+	public Sprite Player_5;
 	float Selection;
 
 	public GameObject Right_Selection_Arrow;
@@ -15,16 +18,15 @@ public class select_A_character : MonoBehaviour {
 	public AudioClip[] Selection_Audio;
 	GameObject Sound_Manager;
 
-	public GameObject Character_Text;
-	public Color[] Text_Colors;
-	int Index;
-	public string Player_1_Text;
-	public string Player_2_Text;
+	public Text Character_Text;
+	public Color[] Character_Text_Color;
+	int Color_Index;
+
+
 
 	// Use this for initialization
 	void Start () {
-		Index = Random.Range(0,Text_Colors.Length);
-		Character_Text.GetComponent<Text>().color = new Color(Text_Colors[Index].r,Text_Colors[Index].g,Text_Colors[Index].b);
+		Change_Text();
 
 		Selection = PlayerPrefs.GetFloat("Character_Selection");
 		Sound_Manager = GameObject.FindGameObjectWithTag("Sound_Manager");
@@ -44,20 +46,22 @@ public class select_A_character : MonoBehaviour {
 	{
 		if (Input.GetKeyDown (KeyCode.RightArrow)) {
 			Selection += 1;
+			Change_Text();
 
 		}
 
 		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
 			Selection -= 1;
+			Change_Text();
 
 		}
 
 		if (Selection < 0) {
-			Selection = 1;
+			Selection = 4;
 
 		}
 
-		if (Selection > 1){
+		if (Selection > 4){
 			Selection = 0;
 
 		}
@@ -70,14 +74,36 @@ public class select_A_character : MonoBehaviour {
 		if (Selection == 0) {
 			gameObject.GetComponent<Image>().sprite = Player_1;
 			PlayerPrefs.SetFloat("Character_Selection",0);
-			Character_Text.GetComponent<Text>().text = Player_1_Text;
+
+
 
 		}
 
 		if (Selection == 1) {
 			gameObject.GetComponent<Image>().sprite = Player_2;
 			PlayerPrefs.SetFloat("Character_Selection",1);
-			Character_Text.GetComponent<Text>().text = Player_2_Text;
+
+
+		}
+
+		if (Selection == 2) {
+			gameObject.GetComponent<Image>().sprite = Player_3;
+			PlayerPrefs.SetFloat("Character_Selection",2);
+
+
+		}
+
+		if (Selection == 3) {
+			gameObject.GetComponent<Image>().sprite = Player_4;
+			PlayerPrefs.SetFloat("Character_Selection",3);
+
+
+		}
+
+		if (Selection == 4) {
+			gameObject.GetComponent<Image>().sprite = Player_5;
+			PlayerPrefs.SetFloat("Character_Selection",4);
+
 
 		}
 
@@ -86,8 +112,8 @@ public class select_A_character : MonoBehaviour {
 	void Arrow_Scaling ()
 	{
 		if (Input.GetKeyDown (KeyCode.RightArrow)) {
-			Index = Random.Range(0,Text_Colors.Length);
-			Character_Text.GetComponent<Text>().color = new Color(Text_Colors[Index].r,Text_Colors[Index].g,Text_Colors[Index].b);
+			
+
 
 			Right_Selection_Arrow.transform.localScale = Right_Selection_Arrow.transform.localScale * Arrow_Up_Scale;
 			Sound_Manager.GetComponent<Sound>().Playsound(Selection_Audio[Random.Range(0,Selection_Audio.Length)],1);
@@ -95,8 +121,7 @@ public class select_A_character : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
-			Index = Random.Range(0,Text_Colors.Length);
-			Character_Text.GetComponent<Text>().color = new Color(Text_Colors[Index].r,Text_Colors[Index].g,Text_Colors[Index].b);
+			
 			
 			Left_Selection_Arrow.transform.localScale = Left_Selection_Arrow.transform.localScale * Arrow_Up_Scale;
 			Sound_Manager.GetComponent<Sound>().Playsound(Selection_Audio[Random.Range(0,Selection_Audio.Length)],1);
@@ -112,6 +137,12 @@ public class select_A_character : MonoBehaviour {
 			Left_Selection_Arrow.transform.localScale = Left_Selection_Arrow.transform.localScale / Arrow_Up_Scale;
 
 		}
+
+	}
+
+	void Change_Text(){
+		Color_Index = Random.Range(0,Character_Text_Color.Length);
+		Character_Text.color = new Color(Character_Text_Color[Color_Index].r,Character_Text_Color[Color_Index].g,Character_Text_Color[Color_Index].b);
 
 	}
 
