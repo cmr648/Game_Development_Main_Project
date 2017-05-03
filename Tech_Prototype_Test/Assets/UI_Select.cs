@@ -24,6 +24,7 @@ public class UI_Select : MonoBehaviour {
 	public GameObject Credits_Panel;
 	public GameObject Character_Panel;
 
+
 	// a number to select things
 	public float Selection_Number;
 
@@ -293,12 +294,13 @@ public class UI_Select : MonoBehaviour {
 
 		if (isMuted) {
 			PlayerPrefs.SetFloat ("Mute_Volume", 0);
+			Mute_Button.GetComponent<Text>().text = "Press control to unmute";
 
 		}
 
 		if (!isMuted) {
 			PlayerPrefs.SetFloat("Mute_Volume",1);
-
+			Mute_Button.GetComponent<Text>().text = "Press control to mute";
 		}
 
 
