@@ -25,7 +25,8 @@ public class Camera_Movement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		cameraTargetY = Center_Room.transform.position.y;
+		 cameraTargetX = Center_Room.transform.position.x;
 	}
 	
 	// Update is called once per frame
